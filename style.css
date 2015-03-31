@@ -1,0 +1,36 @@
+body {
+      background-image: url("lines.jpg");
+     }
+
+h1 {
+    color: white;
+    text-align: center;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    }
+ 
+p#des {
+    color:white;
+    text-align: center;
+    }
+
+h2,h3,h4,table,p,ul,a {
+    color: white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    }
+
+
+a#jumptop {
+    position:fixed;
+    bottom:30px;
+    right:50px;
+ }   
+
+ #buttons {
+    position:fixed;
+    right:50px;
+    top:30px;
+    }
+
+#text {
+  text-align: center;
+  }
