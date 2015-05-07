@@ -1,5 +1,5 @@
 body {
-      background-image: url("lines.jpg");
+      background-image: url("sky.jpg");
      }
 
 h1 {
@@ -8,17 +8,16 @@ h1 {
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     }
  
-p#des {
-    color:white;
-    text-align: center;
-    }
-
 h2,h3,h4,table,p,ul,a {
     color: white;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     }
 
-
+a {
+      font-size:23px;
+      opacity: 0.5;
+      text-decoration: none;
+  }
 a#jumptop {
     position:fixed;
     bottom:30px;
