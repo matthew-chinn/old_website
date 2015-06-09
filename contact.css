@@ -1,0 +1,32 @@
+h1 {
+    color: white;
+    text-align: center;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 50px;
+    }
+a {
+      color: white;
+      font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+      font-size:23px;
+      text-decoration: none;
+
+  }
+
+div > a{
+      opacity: 0.5;
+}
+p{
+    color: white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+body {
+      background-image: url("sky.jpg");
+     }
+#buttons {
+    position:fixed;
+    right:50px;
+    top:30px;
+    }
+#text {
+  text-align: center;
+  }

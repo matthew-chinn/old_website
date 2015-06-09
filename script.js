@@ -1,10 +1,10 @@
 $(document).ready(function(){
     var count = 0;
     $('a').mouseenter(function(){
-        $(this).fadeTo("300", 1);
+        $(this).fadeTo("200", 1);
     });
     $('a').mouseleave(function(){
-        $(this).fadeTo("300", .5);
+        $(this).fadeTo("200", .5);
     });
     $('#button').click(function(){
           $('#des').fadeToggle('400');

@@ -1,0 +1,31 @@
+body {
+    background-image: url("blue.jpg");
+    }
+h2,h3,h4,table,ul, p {
+    color: white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    }
+a {
+      color: white;
+      font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+      font-size:23px;
+      opacity: 0.5;
+      text-decoration: none;
+
+  }
+h1 {
+    color: white;
+    text-align: center;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 50px;
+    }
+#buttons {
+    position:fixed;
+    right:50px;
+    top:30px;
+    }
+a#jumptop {
+    position:fixed;
+    bottom:30px;
+    right:50px;
+ }   
