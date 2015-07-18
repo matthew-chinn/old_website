@@ -4,23 +4,20 @@ $(document).ready(function(){
     $('#petitionButton').click(petitionClicked);
     $('#questionButton').click(gameClicked);
 	$('#petitionBox').keydown(function(event){
-		/*console.log("first");
-		console.log("test: " + ".".charCodeAt(0));
-		console.log("count: " + count);
-		console.log("event: " + event.which);
-		console.log("preiod: " + String.fromCharCode(46));
-		console.log("string: " + String.fromCharCode(event.which));*/
-		if( count == 1 && event.which == 190) //user entered a period
+		if( box.val() == "" && event.which == 190) //user entered a period
 		{
 			trickOn = true;
 		}
-		else if(event.which == 190) //second period entered
+		else if(event.which == 190 && trickOn) //second period entered
 		{
 			trickOn = false;
 		}
 		if(trickOn)
 		{
 			box.val("");
+		}
+		if(event.which == 13){ //enter key pressed
+			petitionClicked();
 		}
 	});
     $('#petitionBox').keyup(function(event) {
@@ -42,10 +39,15 @@ $(document).ready(function(){
 			}
 			box.val(temp);
 		}
-		else if( event.which == 190 )
+		else if( count != 1 && event.which == 190 )//second period was placed
 		{
 			box.val(message.substr(0,count));
 			count++;
+		}
+	});
+	$('#questionBox').keypress(function(event){
+		if(event.which == 13){ //enter key
+			gameClicked();
 		}
 	});
 });
