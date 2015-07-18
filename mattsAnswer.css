@@ -1,0 +1,35 @@
+body {
+    background-image: url("sky.jpg");
+}
+
+h1{
+    color: white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+h2{
+    color: white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+h3{
+    color: white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+textarea{
+    resize: none;
+}
+
+#game{
+    display: none;
+}
+
+#answer{   
+    display: none;
+}
+
+p{
+    color: white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
