@@ -1,12 +1,12 @@
 body {
-      background-image: url("sky.jpg");
+      background-image: url("blue.jpg");
      }
 
 h1 {
     color: white;
     text-align: center;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    font-size: 50px;
+    font-size: 20px;
     }
 a {
       color: white;
@@ -38,11 +38,11 @@ a {
     left:630px;
     top:50px;
 }
-#about {position:absolute; top:180px; left:280px;}
-#contact {position:absolute; top:180px; right:260px;}
-#resume {position:absolute; bottom:180px; left:280px;}
-#game {position:absolute; bottom:180px; right:280px;}
-#button {position:absolute; bottom:180px; right:48%;}
+#about {position:absolute; top:10px; left:10px;}
+#contact {position:absolute; top:10px; right:10px;}
+#resume {position:absolute; bottom:10px; left:10px;}
+#game {position:absolute; bottom:10px; right:10px;}
+/*#button {position:absolute; bottom:180px; right:48%;}*/
 
  
 h2,h3,h4,table,p,ul,a {

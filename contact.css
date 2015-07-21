@@ -14,13 +14,19 @@ a {
 
 div > a{
       opacity: 0.5;
+      transition: 1s;
 }
+
+div > a:hover{
+    opacity:1;
+}
+
 p{
     color: white;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 body {
-      background-image: url("sky.jpg");
+      background-image: url("blue.jpg");
      }
 #buttons {
     position:fixed;

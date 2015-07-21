@@ -11,8 +11,13 @@ a {
       font-size:23px;
       opacity: 0.5;
       text-decoration: none;
-
+      transition: opacity 1s;
   }
+
+a:hover{
+    opacity:1;
+}
+
 h1 {
     color: white;
     text-align: center;

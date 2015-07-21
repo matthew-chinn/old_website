@@ -1,5 +1,5 @@
 body {
-    background-image: url("pic.jpg"); 
+    background-image: url("blue.jpg"); 
     }
 p {
     width:70%; 
@@ -26,4 +26,9 @@ a{
   font-size:23px;
   opacity: 0.5;
   text-decoration: none;
+  transition: opacity 1s;
+}
+
+a:hover{
+    opacity:1;
 }
