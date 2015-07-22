@@ -23,16 +23,6 @@ a {
     transition: opacity 1s;
 }
 
-#mail{
-    opacity:1;
-}
-
-#aboutpage p{
-    width:70%; 
-    margin-left:auto; 
-    margin-right: auto;
-}
-
 p{
     color: white;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -46,7 +36,22 @@ p{
 #aboutpage{
     display:none;
     position:absolute;
-    top:200px;
+    top:100px;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#aboutpage p{
+    width:70%; 
+    margin-left:auto; 
+    margin-right: auto;
+}
+
+#picofme{
+    width: 20%;
+    margin-left:40%;
+
 }
 
 #contactpage{
@@ -58,6 +63,10 @@ p{
     margin-right:auto;
 }
 
+#contactpage a{
+    opacity:1;
+}
+
 #resumepage{    
     width:100%;
     display:none;
@@ -65,6 +74,18 @@ p{
     top: 10px;
     color:white;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#projectpage{
+    display: none;
+    position:absolute;
+    top: 30px;
+    width:100%;
+}
+
+#projectpage a{
+    opacity:1;
+    text-decoration:underline;
 }
 
 #resumepage h1{
@@ -81,7 +102,7 @@ p{
 #about {position:absolute; top:10%; right:90%;}
 #contact {position:absolute; top:10%; right:10%;}
 #resume {position:absolute; top:90%; right:90%;}
-#game {position:absolute; top:90%; right:10%;}
+#project{position:absolute; top:90%; right:10%;}
 #home {display:none; position:absolute; top: 20px; right: 50px}
 
 #contactpage p{

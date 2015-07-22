@@ -7,7 +7,7 @@ $(document).ready(function(){
 		$('#about').animate({top: '50px', right:'50px', position:'fixed'});
 		$('#contact').animate({top: '80px', right:'50px', position:'fixed'});
 		$('#resume').animate({top: '110px', right:'50px', position:'fixed'}); 
-		$('#game').animate({top: '140px', right:'50px', position:'fixed'});
+		$('#project').animate({top: '140px', right:'50px', position:'fixed'});
 		$('#home').fadeIn("500");
 		$('#buttons').removeClass("startUp");
 	});
@@ -16,6 +16,7 @@ $(document).ready(function(){
 		$('.active').fadeOut("500").removeClass("active");
 		$('#aboutpage').fadeIn("500").addClass("active");
 		$('#backtotop').fadeOut("500");
+
 		$('#backdrop').css("height", "100%");	
 	});
 
@@ -42,6 +43,13 @@ $(document).ready(function(){
 		transitionHome();
 	});
 
+    $('#project').click(function(){
+        $('.active').fadeOut("500").removeClass("active");
+		$('#projectpage').fadeIn("500").addClass("active");
+		$('#backtotop').fadeOut("500");
+		$('#backdrop').css("height", "100%");	
+    });
+
 });
 
 var transitionHome = function(){
@@ -63,7 +71,7 @@ var transitionHome = function(){
 		right:'70%'
 	}, "slow");
 
-	$('#game').animate({
+	$('#project').animate({
 		position:'absolute',
 		top:'70%',
 		right:'280px'
