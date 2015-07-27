@@ -154,7 +154,7 @@ function playerTurn(){
 				cpuTurn();
 			}
 		});
-		$('#pickup').click(function(){
+		$('#pickup').unbind("click").click(function(){
 			pickupPile(PLAYER);
 		});
 	}

@@ -23,10 +23,6 @@ a {
     transition: opacity 1s;
 }
 
-a:hover{
-    opacity:1;
-}
-
 p{
     color: white;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -35,12 +31,6 @@ p{
 #homepage {
     position:relative;
     top:290px;
-}
-
-#homepage p {
-    color:white;
-    text-align: center;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 #aboutpage{
@@ -61,6 +51,7 @@ p{
 #picofme{
     width: 20%;
     margin-left:40%;
+
 }
 
 #contactpage{
@@ -76,10 +67,6 @@ p{
     opacity:1;
 }
 
-#contactpage p{
-    text-align:center;
-}
-
 #resumepage{    
     width:100%;
     display:none;
@@ -87,11 +74,6 @@ p{
     top: 10px;
     color:white;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-}
-
-#resumepage h1{
-    font-size:50px;
-    text-align: center;
 }
 
 #projectpage{
@@ -106,11 +88,29 @@ p{
     text-decoration:underline;
 }
 
+#resumepage h1{
+    font-size:50px;
+    text-align: center;
+}
+
+#des {
+    color:white;
+    text-align: center;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
 #about {position:absolute; top:10%; right:90%;}
 #contact {position:absolute; top:10%; right:10%;}
 #resume {position:absolute; top:90%; right:90%;}
 #project{position:absolute; top:90%; right:10%;}
 #home {display:none; position:absolute; top: 20px; right: 50px}
+
+#contactpage p{
+    text-align:center;
+}
+a:hover{
+    opacity:1;
+}
 
 #backtotop {
     display: none;
