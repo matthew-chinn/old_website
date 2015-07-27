@@ -154,10 +154,12 @@ function playerTurn(){
 				cpuTurn();
 			}
 		});
-		$('#pickup').click(function(){
+    }
+    $('#pickup').unbind("click").click(function(){
+        if(pile.length !== 0)
 			pickupPile(PLAYER);
-		});
-	}
+	});
+
 
 }
 
@@ -191,6 +193,7 @@ var CPU = false;
 function pickupPile(who){
 	if(who === PLAYER)
 	{
+        console.log("player pickup");
 		makeCard(pile, "playerhand");
 		playerHand = playerHand.concat(pile);
 		pile=[];
@@ -221,7 +224,7 @@ function redoPile(){
 var skipToStart = function(){
     $('.activeInstruction').fadeOut("500").removeClass("activeInstruction");
     $('#welcome').fadeOut("500");
-	$('#game').fadeIn("500").addClass("active").removeClass("hidden");
+	$('.game').fadeIn("500").addClass("active").removeClass("hidden");
     initializeGame();
 };
 

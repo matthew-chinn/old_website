@@ -86,20 +86,23 @@ p{
     height:100px;
     width:80px;
     position:absolute;
-    top:60%;
+    /*top:60%;*/
     right:50%;
 }
 
 #player{
     position:absolute;
+    top:20%;
+    
 }
 
 #cpu {
-    position:relative;
+    position:absolute;
     left:70%;
+    top:20%;
 }
 
 .faceupdown{
-    position:relative;
-    top: 100px;
+    position:absolute;
+    top: 400px;
 }
