@@ -1,33 +1,19 @@
 $(document).ready(function(){
-    $('#header').fadeIn("1000");
-    $('#welcome').fadeIn("500");
-    $('#firstinstruction').fadeIn("500").removeClass("hidden");
+    //$('#header').fadeIn("1000");
+    //$('#welcome').fadeIn("500");
+    //$('#firstinstruction').removeClass("hidden");
     var instruction = 0;
     $('#next').click(function(){
-        $('.activeInstruction').fadeOut("500").removeClass("activeInstruction");
-        if(instruction === 0)
-        {
-            $('#secondinstruction').addClass("activeInstruction");
-            instruction++;
-        }
-        else if(instruction === 1)
-        {
-            $('#thirdinstruction').addClass("activeInstruction");
-            instruction++;
-        }
-        else
-        {
-            $('#fourthinstruction').addClass("activeInstruction");
-            instruction++;
-        }
+        var temp = $('.activeInstruction');
+        temp.removeClass("activeInstruction");
+        temp.next().addClass("activeInstruction").removeClass("hidden");
+        instruction++;
+        
         if(instruction === 4)
         {
             skipToStart();
         }
-        else
-        {
-            $('.activeInstruction').fadeIn("500").removeClass("hidden");
-        }
+        
     });
     $('#skip').click(skipToStart);
             
