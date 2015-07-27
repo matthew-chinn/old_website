@@ -1,0 +1,105 @@
+#header{
+    text-align:center;
+    position:relative;
+    top:20%;
+    margin:0 auto;
+}
+
+.hidden{
+    display:none;
+}
+
+.start{
+    display:none;
+}
+
+.card{
+    height:100px;
+    width:80px;
+    display:inline-block;
+    margin:10px;
+    outline:black solid 2px;
+}
+
+.card p{
+    text-align:center;
+    position:relative;
+    top:20px;
+}
+
+a{
+    outline:black solid 2px;
+    font-size:15px;
+    margin: 5px;
+    padding: 2px 5px;
+}
+
+.selected{
+    background: grey;
+}
+
+.card.facedown{
+    background: #ababab;
+}
+
+#header h1,h2 {
+    margin:0 auto;
+}
+
+#welcome p{
+    margin:5px auto;
+}
+
+#begin{
+    display:none;
+}
+
+body{
+    font-family: sans-serif;
+}
+
+.active{
+    display:block;
+    position:relative;
+    top:20%;
+}
+
+p{
+    font-size:15px;
+}
+
+#pile {
+    outline: black dotted 2px;
+    height:100px;
+    width:80px;
+    position:absolute;
+    top:30%;
+    right:50%;
+}
+
+#pile .card{
+    margin:0;
+}
+
+#deck {
+    outline: black dotted 1px;
+    height:100px;
+    width:80px;
+    position:absolute;
+    top:60%;
+    right:50%;
+}
+
+#player{
+    position:absolute;
+}
+
+#cpu {
+    position:relative;
+    left:70%;
+}
+
+.faceupdown{
+    position:relative;
+    top: 100px;
+}
