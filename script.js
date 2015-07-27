@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $('#name').animate({fontSize: '50px' }, "slow");
+
 	transitionHome();
     
 	$('.startUp a').click(function(){
