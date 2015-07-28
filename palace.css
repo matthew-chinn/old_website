@@ -70,7 +70,7 @@ body{
 
 .active{
     position:absolute;
-    top:10%;
+    top:15%;
 }
 
 p{
@@ -102,6 +102,7 @@ p{
 #player{
     position:absolute;
     top:10%;
+    width:300px;
 }
 
 #cpu {
@@ -114,4 +115,9 @@ p{
 .faceupdown{
     position:absolute;
     top: 400px;
+}
+
+#deck *{
+    margin:5px;
+    text-align:center;
 }

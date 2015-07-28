@@ -19,6 +19,13 @@ $(document).ready(function(){
             
 });
 
+var skipToStart = function(){
+    $('.activeInstruction').fadeOut("500").removeClass("activeInstruction");
+    $('#welcome').fadeOut("500");
+	$('#game').fadeIn("500").addClass("active").removeClass("hidden");
+    initializeGame();
+};
+
 var cpuFacedown;
 var playerFacedown;
 var cpuHand;
@@ -117,6 +124,7 @@ var initializeGame = function(){
             makeCard(cpuFaceup, "cpufaceup");
             makeCard(cpuFacedown, "cpufacedown", "facedown");
 			$('.start').fadeIn("500");
+            $('#deck #remainingCards').html(deck.length);
 			gamePlay();
 		}
     });
@@ -130,23 +138,29 @@ function playerTurn(){
 	console.log(pile);
 	if(playerHand.length !== 0)
 	{
-		$('#playerhand .card').click(function(){
-			var cardClicked = $(this).children("p").html();
-			if(pile.length === 0 || compareCards(cardClicked, pile[pile.length-1]) >= 0)
-			{
-				pile.push(cardClicked);
-				removeCard(playerHand, "playerhand", cardClicked);
-				redoPile();
-				cpuTurn();
-			}
-		});
+		$('#playerhand .card').unbind("click").click(function(){
+            $('#startmsg').fadeOut("500");
+			var cardPlayed = $(this).children("p").html();
+			if(pile.length === 0 || checkSeven(PLAYER, cardPlayed))
+            {
+                pile.push(cardPlayed);
+                removeCard(playerHand, "playerhand", cardPlayed);
+                switch(cardPlayed)
+                {
+                    case '10': bomb(PLAYER); break;
+                    case '2': repeatTurn(PLAYER); break;
+                    default:
+                        cpuTurn();
+                }
+                redoPile();
+                drawCard(PLAYER);
+            }
+        });
     }
     $('#pickup').unbind("click").click(function(){
         if(pile.length !== 0)
-			pickupPile(PLAYER);
-	});
-
-
+            pickupPile(PLAYER);
+    });
 }
 
 function cpuTurn(){
@@ -156,21 +170,88 @@ function cpuTurn(){
 		//check worst cards first
 		for(var i = 0; i < cpuHand.length; i++)
 		{
-			if(pile.length === 0 || compareCards(cpuHand[i], pile[pile.length-1]) >= 0)
+			if(pile.length === 0 || checkSeven(CPU, cpuHand[i]))
 				break; //this card is eligible
 		}
 		if(i < cpuHand.length)
 		{
-			pile.push(cpuHand[i]);
-			removeCard(cpuHand, "cpuhand", cpuHand[i]);
-			redoPile();
-			playerTurn();
-		}
+            var cardPlayed = cpuHand[i];
+			pile.push(cardPlayed);
+			removeCard(cpuHand, "cpuhand", cardPlayed);
+            switch(cardPlayed)
+            {
+                case '10': bomb(CPU); break;
+                case '2': repeatTurn(CPU); break;
+                default:
+                    playerTurn();
+            } 
+            redoPile();
+            drawCard(CPU);
+        }
 		else
 		{
 			pickupPile(CPU);
 		}
 	}
+}
+
+function checkSeven(who, card)
+{
+    var topCard = pile[pile.length-1];
+    if(topCard === '7')
+    {
+        return compareCards(card, topCard, "SEVEN");
+    }
+    else
+    {
+        return compareCards(card, topCard);
+    }
+}
+
+function drawCard(who){
+    if(deck.length > 0)
+    {
+        if(who === PLAYER)
+        {
+            while(playerHand.length < 3)
+            {
+                var temp = deck.pop();
+                playerHand.push(temp);
+                makeCard([temp], "playerhand");
+            }
+        }
+        else
+        {
+            while(cpuHand.length < 3)
+            {
+                var temp = deck.pop();
+                cpuHand.push(temp);
+                makeCard([temp], "cpuhand", "facedown");
+            }
+        }
+        $('#deck #remainingCards').html(deck.length);
+    }
+}
+
+function repeatTurn(who){
+    if(who===PLAYER)
+        playerTurn();
+    else
+        cpuTurn();
+}
+
+//either a 10 or 4 of a kind
+function bomb(who){
+    pile = [];
+    redoPile();
+    if(who === PLAYER)
+    {
+        playerTurn();
+    }
+    else
+    {
+        cpuTurn();
+    }
 }
 
 var PLAYER = true;
@@ -179,7 +260,6 @@ var CPU = false;
 function pickupPile(who){
 	if(who === PLAYER)
 	{
-        console.log("player pickup");
 		makeCard(pile, "playerhand");
 		playerHand = playerHand.concat(pile);
 		pile=[];
@@ -207,12 +287,6 @@ function redoPile(){
 	
 }
 
-var skipToStart = function(){
-    $('.activeInstruction').fadeOut("500").removeClass("activeInstruction");
-    $('#welcome').fadeOut("500");
-	$('.game').fadeIn("500").addClass("active").removeClass("hidden");
-    initializeGame();
-};
 
 var getRandomCard = function(){
     var num = Math.floor((Math.random()*52)+1);
@@ -330,22 +404,24 @@ var compareCards = function(last, prev, misc)
 		return 2;
 	if(last === '2' || last === '7' || last === '10')
 		return 1;
-	if(typeof misc === "undefined")
+	if(typeof misc === "undefined") 
 	{
 		if(getCardNumValue(last) > getCardNumValue(prev))
 			return 1;
 		return -1;
 	}
-	else if(misc === "isSeven")
+	else if(misc === "SEVEN")
 	{
 		if(getCardNumValue(last) < 7)
+        {
 			return 1;
+        }
 		return -1;
 	}
 	else if(misc === "cpuAI") //choosing the three faceup cards
 	{
 		if(prev === '2' || prev === '7' || last === '10')
-			return -1;
+			return -1; //don't override when checking special cards
 		else if(getCardNumValue(last) > getCardNumValue(prev))
 			return 1;
 		else
