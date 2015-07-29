@@ -27,8 +27,9 @@
     height:100px;
     width:80px;
     display:inline-block;
-    margin:10px;
+    margin: 10px 10px 0px 10px;
     outline:black solid 2px;
+    background-color:white;
 }
 
 .card p{
@@ -49,7 +50,8 @@ a{
 }
 
 .card.facedown{
-    background: #ababab;
+    background-image: url('card_back.jpeg');
+    background-size:80px 100px;
 }
 
 #header h1,h2 {
@@ -70,7 +72,7 @@ body{
 
 .active{
     position:absolute;
-    top:15%;
+    top:10%;
 }
 
 p{
@@ -101,23 +103,50 @@ p{
 
 #player{
     position:absolute;
-    top:10%;
+    top:5%;
     width:300px;
+    height:100%;
 }
 
 #cpu {
     position:absolute;
-    width:300px;
-    top:10%;
-    left:70%
+    width:400px;
+    top:5%;
+    left:65%;
+    height:100%;
 }
 
 .faceupdown{
     position:absolute;
-    top: 400px;
+    top: 300px;
+}
+
+.faceup{
+    z-index: 1;
+    position:relative;
+    top:80px;
 }
 
 #deck *{
     margin:5px;
     text-align:center;
+}
+
+#playerhand .card, #cpuhand .card{
+    margin-bottom:-50px;
+}
+
+#startmsg{
+    margin:5px;
+    position:absolute;
+    top:-15px;
+}
+
+#chooseThree{
+    position:absolute;
+    top:-20px;
+}
+    
+p, h3, h4{
+    margin: 5px auto;
 }

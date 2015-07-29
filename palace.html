@@ -60,17 +60,26 @@
 	<div id="chooseThree">
 		<h2>Pick three cards to be faceup:<h2>
 		<a id="startGame">Done</a>
-		<h3 id="startmsg" class="start">You may begin! Pick a card to play</h3>
 		<p id="pickAgain" class="hidden">Must pick exactly three cards</p>
 	</div>
 
+    <div id="startmsg" class="start">
+	<h3>You may begin! Pick a card to play</h3>
+    <p>Double-click a card or highlight and click "Select"</p>
+    </div>
+
 	<div id="player">
 	<h4 class="start">Your hand: </h4>
-	<div id="playerhand"></div>
+    <div id="gamebuttons">
 	<a id="pickup" class="start">Pick up</a>
+    <a id="select" class="start">Select</a>
+    </div>
+	<div id="playerhand"></div>
 
 	<div class="faceupdown">
+    <div class="faceup">
 	<div id="playerfaceup"></div>
+    </div>
 	<div id="playerfacedown" class="facedown"></div>
 	</div>
 
@@ -81,7 +90,9 @@
 	<div id="cpuhand" class="facedown"></div>
 
 	<div class="faceupdown">
+    <div class="faceup">
 	<div id="cpufaceup"></div>
+    </div>
 	<div id="cpufacedown" class="facedown"></div>
 	</div>
 
