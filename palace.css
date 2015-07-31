@@ -1,7 +1,7 @@
 #header{
     text-align:center;
-    position:relative;
-    top:20%;
+    position:absolute;
+    width:100%;
     margin:0 auto;
 }
 
@@ -50,7 +50,7 @@ a{
 }
 
 .card.facedown{
-    background-image: url('card_back.jpeg');
+    background-image: url('classic-cards/card_back.jpeg');
     background-size:80px 100px;
 }
 
@@ -119,12 +119,14 @@ p{
 .faceupdown{
     position:absolute;
     top: 300px;
+    z-index:-1;
 }
 
 .faceup{
-    z-index: 1;
-    position:relative;
+    position:absolute;
+    width:300px;
     top:80px;
+    z-index:2;
 }
 
 #deck *{
@@ -149,4 +151,57 @@ p{
     
 p, h3, h4{
     margin: 5px auto;
+}
+
+.result{
+    position:absolute;
+    top:40%;
+    width:100%;
+    text-align:center;
+}
+
+.result h1{
+    font-size:100px;
+    font-family: "Comic Sans MS", "cursive", "sans-serif";
+    width: 100%;
+    position:absolute;
+    margin: 0 auto;
+}
+
+#cpuplayed{
+    position:absolute;
+    top:10%;
+    left:40%;
+}
+
+#cpuplayed h3{
+    display: inline-block;
+}
+
+/*make cards unable to be highlighted after double click*/
+body{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.hand {
+    z-index:3;
+}
+
+.bottomthree{
+    position:absolute;
+    width:300px;
+    top:110px;
+    z-index:1;
+}
+
+#playagain{
+    z-index:1;
+    position:absolute;
+    background-color:white;
+    top:20%;
 }

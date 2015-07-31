@@ -74,34 +74,39 @@
 	<a id="pickup" class="start">Pick up</a>
     <a id="select" class="start">Select</a>
     </div>
-	<div id="playerhand"></div>
+	<div id="playerhand" class="hand"></div>
 
 	<div class="faceupdown">
-    <div class="faceup">
-	<div id="playerfaceup"></div>
-    </div>
-	<div id="playerfacedown" class="facedown"></div>
+	<div id="playerfaceup" class="faceup"></div>
+	<div id="playerfacedown" class="facedown bottomthree"></div>
 	</div>
 
 	</div>
 
 	<div id="cpu">
 	<h4 class="start">CPU hand: </h4>
-	<div id="cpuhand" class="facedown"></div>
+	<div id="cpuhand" class="facedown hand"></div>
 
 	<div class="faceupdown">
-    <div class="faceup">
-	<div id="cpufaceup"></div>
+	<div id="cpufaceup" class="faceup"></div>
+	<div id="cpufacedown" class="facedown bottomthree"></div>
+	</div>
+
+	</div>
+
+    <div id="cpuplayed" class="start">
+    <h3>CPU played: <h3 id="cpumove"></h3></h3>
     </div>
-	<div id="cpufacedown" class="facedown"></div>
-	</div>
-
-	</div>
-
 	<div id="pile" class="start"></div>
 	<div id="deck" class="start"><em>Cards remaining:</em><h4 id="remainingCards"></h4></div>
 
 	</div>
+
+    <div class="result">
+    <h1 id="win" class="hidden">You Won!</h1>
+    <h1 id="lose" class="hidden">You Lost!</h1>
+    <a id="playagain" class="hidden">Play again?</a>
+    </div>
 
 	</body>
 
