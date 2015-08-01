@@ -51,8 +51,9 @@
 		must choose the facedown cards at random to play, and normal play
 		continues until someone uses up all their cards</p></div>
 		
-		
+		<div id="rulebuttons">
 		<a id="next">Next</a> <a id="skip">Skip</a>
+        </div>
 	</div>
 
 	<div id="game" class="hidden" >
@@ -69,6 +70,7 @@
     </div>
 
 	<div id="player">
+
 	<h4 class="start">Your hand: </h4>
     <div id="gamebuttons">
 	<a id="pickup" class="start">Pick up</a>
@@ -78,18 +80,19 @@
 
 	<div class="faceupdown">
 	<div id="playerfaceup" class="faceup"></div>
-	<div id="playerfacedown" class="facedown bottomthree"></div>
+	<div id="playerfacedown" class="bottomthree"></div>
 	</div>
 
 	</div>
 
 	<div id="cpu">
+
 	<h4 class="start">CPU hand: </h4>
-	<div id="cpuhand" class="facedown hand"></div>
+	<div id="cpuhand" class="hand"></div>
 
 	<div class="faceupdown">
 	<div id="cpufaceup" class="faceup"></div>
-	<div id="cpufacedown" class="facedown bottomthree"></div>
+	<div id="cpufacedown" class="bottomthree"></div>
 	</div>
 
 	</div>
@@ -98,6 +101,7 @@
     <h3>CPU played: <h3 id="cpumove"></h3></h3>
     </div>
 	<div id="pile" class="start"></div>
+    <img id="bomb" src="bomb.png">
 	<div id="deck" class="start"><em>Cards remaining:</em><h4 id="remainingCards"></h4></div>
 
 	</div>

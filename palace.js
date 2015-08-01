@@ -47,16 +47,6 @@ var initializeGame = function(){
     cpuFaceup = [];
     pile = [];
 
-    pile.toString = function()
-    {
-        var string = "";
-        for (var i = 0; i < pile.length; i++)
-        {
-            string += getCardValue(pile[i]) + " ";
-        }
-        return string;
-    } 
-
     for(var i = 0; i < 6; i++) //deal 6 per hand, 3 per facedown pile
     {
 		if(i < 3)
@@ -94,9 +84,9 @@ var initializeGame = function(){
 			$(this).fadeOut("500");
             $('#pickAgain').fadeOut("500");
             $('.selected > p').each(function(){
-                var value = parseInt($(this).html());
-				removeCard(playerHand, "playerhand", value);
-				playerFaceup.push(value);
+                var num = parseInt($(this).html());
+				removeCard(playerHand, "playerhand", num);
+				playerFaceup.push(num);
 			}); 
 
             $('.selected').removeClass("selected");
@@ -203,9 +193,11 @@ function playerTurn(){
     });
 
     $('#pickup').unbind("click").click(function(){
+        $('#bomb').css("visibility", "hidden");
         if(pile.length !== 0)
             pickupPile(PLAYER);
     });
+
 }
 
 function cpuTurn(){
@@ -251,42 +243,43 @@ function cpuPlayFacedownCard()
 
 function cpuPlayCard(array)
 {
-    array.sort(function(a,b){return compareCards(a,b)}); 
+    array.sort(function(a,b){return compareCards(a,b, "cpuAI")}); 
 		//check worst cards first
         var i = 0;
         var numCards = 1;
         var card;
+        var answers = [];
 		for(i; i < array.length; i++)
 		{
             card= array[i];
 			if(pile.length === 0 || (compareTopCard(card) >= 0) )
             {
+                answers.push(card);
 				break; //this card is eligible
             }
 		}
-
-        for(var j = 1; j < 4; j++) //check if cpu has more than one
+        //check if cpu has more than one
+        if(answers.length === 1)
         {
-            var nextCard= array[i+j];
-            if((i+j < array.length) && 
-                compareCards(card, nextCard) === 0)
+            for(var j = i+1; j < i+4 && j<array.length; j++)         
             {
-                console.log("cpu has more than one");
-                numCards++;
-            }
-            else
-            {
-                break;
-            }
-        }          
-		if(i < array.length)
+                var nextCard= array[j];
+                if(compareCards(card, nextCard) === 0)
+                {
+                    console.log("cpu has more than one");
+                    answers.push(array[j]);
+                    numCards++;
+                }
+            }          
+        }
+		if(answers.length !== 0) //there is an eligible card
 		{
-            var cardPlayed = getCardValue(array[i]);
+            var cardPlayed = getCardValue(answers[0]);
             console.log("cpu push " + cardPlayed + " " + numCards + "x");
             var prevMove = $('#cpumove').html();
             $('#cpumove').html(prevMove + " " + cardPlayed + 
                 " (" + numCards + "x)");
-            playCard([array[i]], numCards, CPU);
+            playCard(answers, numCards, CPU);
             console.log("pile: " + pile.toString());
         }
 		else
@@ -298,42 +291,44 @@ function cpuPlayCard(array)
 //cardsChosen is an array
 function playCard(cardsChosen, numChosen, who)
 {
-    var cardChosenValue = getCardValue(cardChosen);
+    var cardChosenValue = getCardValue(cardsChosen[0]);
     //clear cpu move if player goes
     if(who === PLAYER)
+    {
         $('#cpumove').html("");
+        $('#bomb').css("visibility", "hidden");
+    }
     for(var i = 0; i < numChosen; i++)
     {
         pile.push(cardsChosen[i]);
     }
    
-    for(var i = numChosen; i > 0; i--)
+    for(var i = 0; i < numChosen; i++)
     {
         if(who === PLAYER)
         {
             if(playerHand.length > 0)
-                removeCard(playerHand, "playerhand", cardChosenValue);
+                removeCard(playerHand, "playerhand", cardsChosen[i]);
             else if(playerFaceup.length > 0)
-                removeCard(playerFaceup, "playerfaceup", cardChosenValue);
+                removeCard(playerFaceup, "playerfaceup", cardsChosen[i]);
             else
-                removeCard(playerFacedown, "playerfacedown", cardChosenValue);
+                removeCard(playerFacedown, "playerfacedown", cardsChosen[i]);
         }
         else
         {
             if(cpuHand.length > 0)
-                removeCard(cpuHand, "cpuhand", cardChosenValue);
+                removeCard(cpuHand, "cpuhand", cardsChosen[i]);
             else if(cpuFaceup.length > 0)
-                removeCard(cpuFaceup, "cpufaceup", cardChosenValue);
+                removeCard(cpuFaceup, "cpufaceup", cardsChosen[i]);
             else
-                removeCard(cpuFacedown, "cpufacedown", cardChosenValue);
+                removeCard(cpuFacedown, "cpufacedown", cardsChosen[i]);
         }
     }
     if(checkBomb())
     {
-        cardChosen = 40; //one of the tens
+        cardChosenValue = '10'; //one of the tens
     }
     var repeat = false;
-    var cardChosenValue = getCardValue(cardChosen);
     switch(cardChosenValue)
     {
         case '10': bomb(who); repeat= true; break;
@@ -355,6 +350,7 @@ function playCard(cardsChosen, numChosen, who)
 
 }
 
+//card is the div of the card, cardsChosen is an array, numChosen is an int
 function playerClick(card, cardsChosen, numChosen)
 {
     $('#startmsg').fadeOut("500");
@@ -366,7 +362,6 @@ function playerClick(card, cardsChosen, numChosen)
     {
         cardChosen = parseInt($(card).children("p").html());
         cardChosenValue = getCardValue(cardChosen);
-        cardsChosen.push(cardChosen);
     }
     cardChosenNext = parseInt($(card).children("p").html());
     cardChosenValueNext = getCardValue(cardChosenNext);
@@ -378,9 +373,6 @@ function playerClick(card, cardsChosen, numChosen)
         {
             cardsChosen = [];
             $('.selected').removeClass("selected");
-            cardChosen = parseInt($(card).children("p").html());
-            cardChosenValue = getCardValue(cardChosen);
-            cardsChosen.push(cardChosen);
             numChosen = 0;
         }
 
@@ -509,6 +501,7 @@ function bomb(who){
     //pile = [];
     pile.length = 0;
     redoPile();
+    $('#bomb').css("visibility", "visible");
 }
 
 var PLAYER = true;
@@ -592,7 +585,7 @@ var makeCard = function(array, divId, cardClass){
         if(typeof cardClass !== "undefined")
         {
             //$(cardOutline).addClass(cardClass);
-            $(cardFacedown).addClass("facedown");
+            $(cardImage).addClass("facedown");
         }
         $(cardFacedown).attr("src", "classic-cards/card_back.png");
         $(cardFacedown).css({
@@ -657,16 +650,17 @@ var getCardNumValue = function(card)
 }
 
 
-//array that cards are being removed from, divId of the div to modify, value of
+//array that cards are being removed from, divId of the div to modify, num of
 //card to be removed
-var removeCard = function(array, divId, value)
+var removeCard = function(array, divId, num)
 {
-    var arrayValues=[];
+    /*var arrayValues=[];
     for(var i = 0; i < array.length; i++)
     {
         arrayValues[i] = getCardValue(array[i]);
-    }
-	var loc = arrayValues.indexOf(value);
+    }*/
+	//var loc = arrayValues.indexOf(num);
+	var loc = array.indexOf(num);
 	array.splice(loc, 1);
 
     if($('#' +divId+ ' img:first-child').hasClass("facedown"))
@@ -686,6 +680,7 @@ var removeCard = function(array, divId, value)
 //misc represents any third parameter that may be used
 var compareCards = function(last, prev, misc)
 {
+    //console.log(last +" + "+prev+" + "+misc); 
     last=getCardValue(last);
     prev=getCardValue(prev);
 
@@ -709,7 +704,7 @@ var compareCards = function(last, prev, misc)
         }
 		return -1;
 	}
-	else if(misc === "cpuAI") //choosing the three faceup cards
+	else if(misc === "cpuAI") //choosing cards for cpu 
 	{
 		if(prev === '2' || prev === '7' || last === '10')
 			return -1; //don't override when checking special cards
@@ -723,13 +718,13 @@ var compareCards = function(last, prev, misc)
 function loseScreen(){
     $('#lose').fadeIn("500");
     $('#playagain').fadeIn("500");
-    $('#playagain').click(initializeGame);
+    $('#playagain').click(skipToStart);
 }
 
 function winScreen(){
     $('#win').fadeIn("500");
     $('#playagain').fadeIn("500");
-    $('#playagain').click(initializeGame);
+    $('#playagain').click(skipToStart);
 }
 	
 
