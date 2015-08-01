@@ -71,7 +71,8 @@ a{
 }
 
 #welcome p{
-    margin:5px auto;
+    margin:initial;
+    width:70%;
 }
 
 #begin{
