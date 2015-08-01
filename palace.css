@@ -28,14 +28,14 @@
     width:80px;
     display:inline-block;
     margin: 10px 10px 0px 10px;
-    outline:black solid 2px;
-    background-color:white;
+    /*background-color:grey;*/
 }
 
 .card p{
     text-align:center;
-    position:relative;
+    position:absolute;
     top:20px;
+    visibility:hidden;
 }
 
 a{
@@ -46,12 +46,15 @@ a{
 }
 
 .selected{
-    background: grey;
+    /*background: grey;*/
+    opacity:.55;
+    
 }
 
-.card.facedown{
-    background-image: url('classic-cards/card_back.jpeg');
-    background-size:80px 100px;
+.facedown{
+    /*background-image: url('classic-cards/card_back.png');
+    background-size:80px 100px;*/
+    z-index:3;
 }
 
 #header h1,h2 {
