@@ -38,15 +38,7 @@ var deck;
 var pile;
 
 var initializeGame = function(){
-    deck = shuffleDeck();
-    cpuFacedown = [];
-    playerFacedown = [];
-    cpuHand = [];
-    playerHand = [];
-    playerFaceup = [];
-    cpuFaceup = [];
-    pile = [];
-
+    resetAll();
     for(var i = 0; i < 6; i++) //deal 6 per hand, 3 per facedown pile
     {
 		if(i < 3)
@@ -60,8 +52,9 @@ var initializeGame = function(){
     
     var numSelected = 0;
     makeCard(playerHand, "playerhand");
+    $('*').off(); //reset all div event listeners for play again button
 
-    $('.card').click(function(){
+    $('.card').unbind("click").click(function(){
         if($(this).hasClass("selected"))
         {
             $(this).removeClass("selected");
@@ -84,7 +77,7 @@ var initializeGame = function(){
 			$(this).fadeOut("500");
             $('#pickAgain').fadeOut("500");
             $('.selected > p').each(function(){
-                var num = parseInt($(this).html());
+                var num = parseInt($(this).text());
 				removeCard(playerHand, "playerhand", num);
 				playerFaceup.push(num);
 			}); 
@@ -125,8 +118,8 @@ var initializeGame = function(){
 			});
             makeCard(cpuFaceup, "cpufaceup");
             makeCard(cpuFacedown, "cpufacedown", "facedown");
-			$('.start').fadeIn("500");
-            $('#deck #remainingCards').html(deck.length);
+            $('.start').fadeIn("500");
+            $('#deck #remainingCards').text(deck.length);
             $('#chooseThree').fadeOut("500");
 			gamePlay();
 		}
@@ -134,12 +127,15 @@ var initializeGame = function(){
 };
 
 function gamePlay(){
-	playerTurn();
+    var whoStarts = Math.floor(Math.random() * 2);
+    if(whoStarts === 0)
+	    playerTurn();
+    else  
+        cpuTurn();
 }
 
 function playerTurn(){
     var cardsChosen = [];
-    var numChosen = 0;
 
     $('#playerfacedown').off();
     
@@ -151,9 +147,7 @@ function playerTurn(){
             playerDblClick(this);
         });
 		$('#playerhand').on('click', '.card', function(){
-            var temp = playerClick(this, cardsChosen, numChosen);
-            numChosen = temp[0];
-            cardChosen = temp[1];
+            cardsChosen = playerClick(this, cardsChosen);
         });
     }
 
@@ -165,9 +159,7 @@ function playerTurn(){
             playerDblClick(this);
         });
         $('#playerfaceup').on('click', '.card', function(){
-            var temp = playerClick(this, cardsChosen, numChosen);
-            numChosen = temp[0];
-            cardsChosen = temp[1];
+            cardsChosen = playerClick(this, cardsChosen);
         });
     }
 
@@ -176,19 +168,16 @@ function playerTurn(){
         $('#playerfacedown').on('dblclick', '.card', function(){
             playerDblClick(this, FACEDOWN);
         });
-    }
-
-    else
-    {
-        winScreen();
+        if(playerFacedown.length === 0 && playerHand.length === 0)
+            winScreen();
     }
 
     $('#select').unbind("click").click(function(){
-        if(numChosen > 0)
+        if(cardsChosen.length > 0)
         {
             console.log("player push: " + getCardValue(cardsChosen[0]) + " " 
-                + numChosen + "x");
-            playCard(cardsChosen, numChosen, PLAYER);
+                + cardsChosen.length + "x");
+            playCard(cardsChosen, PLAYER);
         }
     });
 
@@ -224,15 +213,15 @@ function cpuPlayFacedownCard()
     if(compareTopCard(card) >= 0)
     {
         playCard([card], 1, CPU);
-        var prevMove = $('#cpumove').html();
-        $('#cpumove').html(prevMove + " " +getCardValue(card)+ " (" + 1 + "x)");
+        var prevMove = $('#cpumove').text();
+        $('#cpumove').text(prevMove + " " +getCardValue(card)+ " (" + 1 + "x)");
     }
     else
     {
         pile.push(card);
-        //var prevMove = $('#cpumove').html();
-        //$('#cpumove').html(prevMove + " " +getCardValue(card)+ " (" + 1 + "x)");
-        $('#cpuMove').html("CPU picked up the pile");
+        //var prevMove = $('#cpumove').text();
+        //$('#cpumove').text(prevMove + " " +getCardValue(card)+ " (" + 1 + "x)");
+        //$('#cpuMove').text("CPU picked up the pile");
         console.log("cpu pick up pile");
         removeCard(cpuFacedown, "cpufacedown", card);
         pickupPile(CPU);
@@ -246,7 +235,6 @@ function cpuPlayCard(array)
     array.sort(function(a,b){return compareCards(a,b, "cpuAI")}); 
 		//check worst cards first
         var i = 0;
-        var numCards = 1;
         var card;
         var answers = [];
 		for(i; i < array.length; i++)
@@ -268,18 +256,17 @@ function cpuPlayCard(array)
                 {
                     console.log("cpu has more than one");
                     answers.push(array[j]);
-                    numCards++;
                 }
             }          
         }
 		if(answers.length !== 0) //there is an eligible card
 		{
             var cardPlayed = getCardValue(answers[0]);
-            console.log("cpu push " + cardPlayed + " " + numCards + "x");
-            var prevMove = $('#cpumove').html();
-            $('#cpumove').html(prevMove + " " + cardPlayed + 
-                " (" + numCards + "x)");
-            playCard(answers, numCards, CPU);
+            console.log("cpu push " + cardPlayed + " " + answers.length + "x");
+            var prevMove = $('#cpumove').text();
+            $('#cpumove').text(prevMove + " " + cardPlayed + 
+                " (" + answers.length + "x)");
+            playCard(answers, CPU);
             console.log("pile: " + pile.toString());
         }
 		else
@@ -289,21 +276,21 @@ function cpuPlayCard(array)
 }
 
 //cardsChosen is an array
-function playCard(cardsChosen, numChosen, who)
+function playCard(cardsChosen, who)
 {
     var cardChosenValue = getCardValue(cardsChosen[0]);
     //clear cpu move if player goes
     if(who === PLAYER)
     {
-        $('#cpumove').html("");
+        $('#cpumove').text("");
         $('#bomb').css("visibility", "hidden");
     }
-    for(var i = 0; i < numChosen; i++)
+    for(var i = 0; i < cardsChosen.length; i++)
     {
         pile.push(cardsChosen[i]);
     }
    
-    for(var i = 0; i < numChosen; i++)
+    for(var i = 0; i < cardsChosen.length; i++)
     {
         if(who === PLAYER)
         {
@@ -350,50 +337,43 @@ function playCard(cardsChosen, numChosen, who)
 
 }
 
-//card is the div of the card, cardsChosen is an array, numChosen is an int
-function playerClick(card, cardsChosen, numChosen)
+//card is the div of the card, cardsChosen is an array, 
+function playerClick(card, cardsChosen)
 {
     $('#startmsg').fadeOut("500");
-    var cardChosenValueNext;
-    var cardChosenNext;
-    var cardChosenValue;
-    var cardChosen = cardsChosen[0];
-    if(typeof cardChosenValue === "undefined" || compareTopCard(cardChosen) < 0 )
+    var cardChosen = parseInt($(card).children("p").text());
+    var cardChosenValue = getCardValue(cardChosen);
+    var prevCardValue;
+    if(cardsChosen.length !== 0)
     {
-        cardChosen = parseInt($(card).children("p").html());
-        cardChosenValue = getCardValue(cardChosen);
+        prevCardValue = getCardValue(cardsChosen[0]);
     }
-    cardChosenNext = parseInt($(card).children("p").html());
-    cardChosenValueNext = getCardValue(cardChosenNext);
     
-    if(pile.length === 0 || (compareTopCard(cardChosen) >= 0) )
+    if(compareTopCard(cardChosen) >= 0) //this card is eligible
     {
-        if(cardChosenValue !== cardChosenValueNext && 
-                compareTopCard(cardChosen) >= 0) //diff value chosen
+        if(cardChosenValue !== prevCardValue) //diff card chosen
         {
-            cardsChosen = [];
+            cardsChosen = [cardChosen];
             $('.selected').removeClass("selected");
-            numChosen = 0;
+            $(card).addClass("selected");
         }
 
-        if(compareTopCard(cardChosenNext) >= 0) //highlight card
+        else //same card value chosen
         {
-            if($(card).hasClass("selected"))
+            if(cardsChosen.indexOf(cardChosen) === -1) //not already chosen
             {
-                var index = cardsChosen.indexOf(cardChosenNext);
-                cardsChosen = cardsChosen.splice(index, 1);
-                $(card).removeClass("selected");
-                numChosen--;
-            }
-            else
-            {
-                cardsChosen.push(cardChosenNext);
                 $(card).addClass("selected");
-                numChosen++;
+                cardsChosen.push(cardChosen);
+            }
+            else //already chosen
+            {
+                $(card).removeClass("selected");
+                var index = cardsChosen.indexOf(cardChosen);
+                cardsChosen.splice(index, 1);
             }
         }
     }
-    return [numChosen, cardsChosen];
+    return cardsChosen;
 }
 
 var FACEDOWN = true;
@@ -401,12 +381,13 @@ var FACEDOWN = true;
 function playerDblClick(cardsrc, hand)
 {
     $('#startmsg').fadeOut("500");
-    var card = parseInt($(cardsrc).children("p").html());
+    var card = parseInt($(cardsrc).children("p").text());
     var cardValue= getCardValue(card);
     if(pile.length === 0 || (compareTopCard(card) >= 0) )
     {
+        $('.selected').removeClass("selected");
         console.log("player push: " + cardValue + " " + "1x");
-        playCard([card], 1, PLAYER);
+        playCard([card], PLAYER);
     }
     else if(hand === FACEDOWN)
     {
@@ -458,7 +439,7 @@ function drawCard(who){
             if(cpuHand.length < 3)
                 drawCard(CPU);
         }
-        $('#deck #remainingCards').html(deck.length);
+        $('#deck #remainingCards').text(deck.length);
     }
 }
 
@@ -510,7 +491,7 @@ var CPU = false;
 function pickupPile(who){
 	if(who === PLAYER)
 	{
-        $('#cpumove').html("");
+        $('#cpumove').text("");
 		makeCard(pile, "playerhand");
 		playerHand = playerHand.concat(pile);
         if(playerHand.length > 3)
@@ -525,6 +506,7 @@ function pickupPile(who){
 		cpuHand = cpuHand.concat(pile);
 		pile=[];
 		redoPile();
+        $('#cpuMove').text("CPU picked up the pile");
 		playerTurn();
 	}
 }
@@ -564,7 +546,7 @@ var shuffleDeck = function(){
     return deck;
 }
 
-//array for the cards, num in the array to make, what div to place card in
+//array for the cards, what div to place card in
 //cardClass: blank, "facedown"
 var makeCard = function(array, divId, cardClass){
     for(var i = 0; i < array.length; i++)
@@ -654,12 +636,6 @@ var getCardNumValue = function(card)
 //card to be removed
 var removeCard = function(array, divId, num)
 {
-    /*var arrayValues=[];
-    for(var i = 0; i < array.length; i++)
-    {
-        arrayValues[i] = getCardValue(array[i]);
-    }*/
-	//var loc = arrayValues.indexOf(num);
 	var loc = array.indexOf(num);
 	array.splice(loc, 1);
 
@@ -718,15 +694,33 @@ var compareCards = function(last, prev, misc)
 function loseScreen(){
     $('#lose').fadeIn("500");
     $('#playagain').fadeIn("500");
-    $('#playagain').click(skipToStart);
+    $('#playagain').click(initializeGame);
 }
 
 function winScreen(){
     $('#win').fadeIn("500");
     $('#playagain').fadeIn("500");
-    $('#playagain').click(skipToStart);
+    $('#playagain').click(initializeGame);
 }
 	
+function resetAll(){
+    deck = shuffleDeck();
+    cpuFacedown = [];
+    playerFacedown = [];
+    cpuHand = [];
+    playerHand = [];
+    playerFaceup = [];
+    cpuFaceup = [];
+    pile = [];
+    $('.cardholder').empty(); //clear divs
+    $('#bomb').css("visibility", "hidden");
+    $('#cpumove').text("");
+    $('#chooseThree').fadeIn("500");
+    $('#startGame').fadeIn("500");
+    $('.start').css("display", "none");
+    $('#playerhand').css("width", "300");
+}
+
 
         
 	

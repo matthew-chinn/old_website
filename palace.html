@@ -56,7 +56,7 @@
         </div>
 	</div>
 
-	<div id="game" class="hidden" >
+	<div id="game" class="hidden" > <!--To line 189-->
 
 	<div id="chooseThree">
 		<h2>Pick three cards to be faceup:<h2>
@@ -76,11 +76,11 @@
 	<a id="pickup" class="start">Pick up</a>
     <a id="select" class="start">Select</a>
     </div>
-	<div id="playerhand" class="hand"></div>
+	<div id="playerhand" class="hand cardholder"></div>
 
 	<div class="faceupdown">
-	<div id="playerfaceup" class="faceup"></div>
-	<div id="playerfacedown" class="bottomthree"></div>
+	<div id="playerfaceup" class="faceup cardholder"></div>
+	<div id="playerfacedown" class="bottomthree cardholder"></div>
 	</div>
 
 	</div>
@@ -88,21 +88,23 @@
 	<div id="cpu">
 
 	<h4 class="start">CPU hand: </h4>
-	<div id="cpuhand" class="hand"></div>
+	<div id="cpuhand" class="hand cardholder"></div>
 
 	<div class="faceupdown">
-	<div id="cpufaceup" class="faceup"></div>
-	<div id="cpufacedown" class="bottomthree"></div>
+	<div id="cpufaceup" class="faceup cardholder"></div>
+	<div id="cpufacedown" class="bottomthree cardholder"></div>
 	</div>
 
 	</div>
 
     <div id="cpuplayed" class="start">
-    <h3>CPU played: <h3 id="cpumove"></h3></h3>
+        <h3>CPU played: <h3 id="cpumove"></h3></h3>
     </div>
-	<div id="pile" class="start"></div>
+	<div id="pile" class="start cardholder"></div>
     <img id="bomb" src="bomb.png">
-	<div id="deck" class="start"><em>Cards remaining:</em><h4 id="remainingCards"></h4></div>
+	<div id="deck" class="start">
+        <h4>Cards remaining: <span id="remainingCards"></span></h4>
+    </div>
 
 	</div>
 
