@@ -47,7 +47,7 @@ $(document).ready(function(){
         $('.active').fadeOut("500").removeClass("active");
 		$('#projectpage').fadeIn("500").addClass("active");
 		$('#backtotop').fadeOut("500");
-		$('#backdrop').css("height", "100%");	
+		$('#backdrop').css("height", "120%");	
     });
 
 });

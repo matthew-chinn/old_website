@@ -118,3 +118,7 @@ a:hover{
     bottom:30px;
     right:50px;
 }
+
+#projectpage img {
+    width: 45%;
+}
