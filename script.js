@@ -1,6 +1,10 @@
 $(document).ready(function(){
     $('#name').animate({fontSize: '50px' }, "slow");
 
+    //preload image?
+    $('<img />').attr('src',
+    "aboutpic.jpg").appendTo('#aboutpage').addClass("picofme");
+
 	transitionHome();
     
 	$('.startUp a').click(function(){
@@ -12,30 +16,30 @@ $(document).ready(function(){
 		$('#buttons').removeClass("startUp");
 	});
 
-	$('#about').click(function(){
+    $('#buttons a').click(function(){
 		$('.active').fadeOut("500").removeClass("active");
+    });
+
+
+	$('#about').click(function(){
 		$('#aboutpage').fadeIn("500").addClass("active");
 		$('#backtotop').fadeOut("500");
-
 		$('#backdrop').css("height", "100%");	
 	});
 
 	$('#contact').click(function(){
-		$('.active').fadeOut("500").removeClass("active");
 		$('#contactpage').fadeIn("500").addClass("active");
 		$('#backtotop').fadeOut("500");
 		$('#backdrop').css("height", "100%");	
 	});
 
 	$('#resume').click(function(){
-		$('.active').fadeOut("500").removeClass("active");
 		$('#resumepage').fadeIn("500").addClass("active");
 		$('#backtotop').fadeIn("500");
 		$('#backdrop').css("height", "200%");
 	});
 
 	$('#home').click(function(){
-		$('.active').fadeOut("500").removeClass("active");
 		$('#homepage').fadeIn("500").addClass("active");
 		$('#buttons').addClass("startUp");
 		$('#backtotop').fadeOut("500");
@@ -44,7 +48,6 @@ $(document).ready(function(){
 	});
 
     $('#project').click(function(){
-        $('.active').fadeOut("500").removeClass("active");
 		$('#projectpage').fadeIn("500").addClass("active");
 		$('#backtotop').fadeOut("500");
 		$('#backdrop').css("height", "120%");	
@@ -55,14 +58,14 @@ $(document).ready(function(){
 var transitionHome = function(){
 	$('#about').animate({
         position:'absolute',
-        top:'180px',
-        right:'70%'
+        top:'30%',
+        right:'71%'
 	}, "slow");
 
 	$('#contact').animate({
 		position:'absolute',
-		top:'180px',
-		right:'260px'
+		top:'30%',
+		right:'20%'
 	}, "slow");
 
 	$('#resume').animate({
@@ -74,7 +77,7 @@ var transitionHome = function(){
 	$('#project').animate({
 		position:'absolute',
 		top:'70%',
-		right:'280px'
+		right:'22%'
 	}, "slow");
 
 	$('#home').fadeOut("500");
