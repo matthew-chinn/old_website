@@ -1,12 +1,5 @@
 $(document).ready(function(){
-    $('#name').animate({fontSize: '50px' }, "slow");
 
-    //preload image?
-    $('<img />').attr('src',
-    "aboutpic.jpg").appendTo('#aboutpage').addClass("picofme");
-
-	transitionHome();
-    
 	$('.startUp a').click(function(){
 		$('#about').animate({top: '50px', right:'50px', position:'fixed'});
 		$('#contact').animate({top: '80px', right:'50px', position:'fixed'});
@@ -44,6 +37,7 @@ $(document).ready(function(){
 		$('#buttons').addClass("startUp");
 		$('#backtotop').fadeOut("500");
 		$('#backdrop').css("height", "100%");	
+        $('#name').css("fontSize", "24px");
 		transitionHome();
 	});
 
@@ -53,9 +47,12 @@ $(document).ready(function(){
 		$('#backdrop').css("height", "120%");	
     });
 
+    transitionHome();
+
 });
 
 var transitionHome = function(){
+    $('#name').animate({fontSize: '50px' }, "slow");
 	$('#about').animate({
         position:'absolute',
         top:'30%',
