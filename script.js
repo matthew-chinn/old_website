@@ -1,10 +1,10 @@
 $(document).ready(function(){
 
 	$('.startUp a').click(function(){
-		$('#about').animate({top: '50px', right:'50px', position:'fixed'});
-		$('#contact').animate({top: '80px', right:'50px', position:'fixed'});
-		$('#resume').animate({top: '110px', right:'50px', position:'fixed'}); 
-		$('#project').animate({top: '140px', right:'50px', position:'fixed'});
+		$('#about').animate({top: '50px', right:'50px'});
+		$('#contact').animate({top: '80px', right:'50px'});
+		$('#resume').animate({top: '110px', right:'50px'}); 
+		$('#project').animate({top: '140px', right:'50px'});
 		$('#home').fadeIn("500");
 		$('#buttons').removeClass("startUp");
 	});

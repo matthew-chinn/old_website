@@ -103,11 +103,11 @@ p{
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
-#about {position:absolute; top:10%; right:90%;}
-#contact {position:absolute; top:10%; right:10%;}
-#resume {position:absolute; top:90%; right:90%;}
-#project{position:absolute; top:90%; right:10%;}
-#home {display:none; position:absolute; top: 20px; right: 50px}
+#about {position:fixed; top:10%; right:90%;}
+#contact {position:fixed; top:10%; right:10%;}
+#resume {position:fixed; top:90%; right:90%;}
+#project{position:fixed; top:90%; right:10%;}
+#home {display:none; position:fixed; top: 20px; right: 50px}
 
 #contactpage p{
     text-align:center;
