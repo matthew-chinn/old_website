@@ -126,3 +126,17 @@ a:hover{
 #projectpage img {
     width: 45%;
 }
+
+.column {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.right {
+    position: relative;
+    left: 20px;
+}
+
+#skills h3{
+    margin: 5px auto;
+}
