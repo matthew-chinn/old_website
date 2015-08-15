@@ -29,7 +29,7 @@ $(document).ready(function(){
 	$('#resume').click(function(){
 		$('#resumepage').fadeIn("500").addClass("active");
 		$('#backtotop').fadeIn("500");
-		$('#backdrop').css("height", "200%");
+		$('#backdrop').css("height", "220%");
 	});
 
 	$('#home').click(function(){
