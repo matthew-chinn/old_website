@@ -97,6 +97,10 @@ p{
     text-align: center;
 }
 
+#resumepage, #projectpage :not(ul){
+    padding-left:10px;
+}
+
 #des {
     color:white;
     text-align: center;
