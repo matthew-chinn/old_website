@@ -44,7 +44,7 @@ $(document).ready(function(){
     $('#project').click(function(){
 		$('#projectpage').fadeIn("500").addClass("active");
 		$('#backtotop').fadeOut("500");
-		$('#backdrop').css("height", "120%");	
+		$('#backdrop').css("height", "160%");	
     });
 
     transitionHome();

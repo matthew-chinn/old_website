@@ -127,7 +127,7 @@ a:hover{
     right:50px;
 }
 
-#projectpage img {
+#psychicImage, #palaceImage {
     width: 45%;
 }
 
@@ -144,4 +144,10 @@ a:hover{
 #skills h3{
     margin: 5px auto;
     margin-left: -20px;
+}
+
+.gympic{
+    display: inline-block;
+    height: 300px;
+    width:180px;
 }
