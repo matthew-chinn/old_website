@@ -17,26 +17,22 @@ $(document).ready(function(){
 	$('#about').click(function(){
 		$('#aboutpage').fadeIn("500").addClass("active");
 		$('#backtotop').fadeOut("500");
-		$('#backdrop').css("height", "100%");	
 	});
 
 	$('#contact').click(function(){
 		$('#contactpage').fadeIn("500").addClass("active");
 		$('#backtotop').fadeOut("500");
-		$('#backdrop').css("height", "100%");	
 	});
 
 	$('#resume').click(function(){
 		$('#resumepage').fadeIn("500").addClass("active");
 		$('#backtotop').fadeIn("500");
-		$('#backdrop').css("height", "220%");
 	});
 
 	$('#home').click(function(){
 		$('#homepage').fadeIn("500").addClass("active");
 		$('#buttons').addClass("startUp");
 		$('#backtotop').fadeOut("500");
-		$('#backdrop').css("height", "100%");	
         $('#name').css("fontSize", "24px");
 		transitionHome();
 	});
@@ -44,7 +40,6 @@ $(document).ready(function(){
     $('#project').click(function(){
 		$('#projectpage').fadeIn("500").addClass("active");
 		$('#backtotop').fadeOut("500");
-		$('#backdrop').css("height", "160%");	
     });
 
     transitionHome();
