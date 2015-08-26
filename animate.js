@@ -2,14 +2,23 @@ var FORWARD = true;
 var BACKWARD = false;
 
 $(document).ready(function(){
-    var svg = $('#svg');
+    var animation1 = $('#animation1');
+    var animation2 = $('#animation2');
     var time = 3000;
     var distance = parseInt($('body').width()) - 170;
-
+    var height = 1000;
+    //animation1.hide();
     var distanceBack = distance - 100;
-    var timeBack = 3000;
-    svg.velocity({translateX:""+distance+"px"}, time)
-       .velocity({translateX:""+distanceBack+"px"}, timeBack);
+    var timeBack = 2000;
+    animation1.velocity({translateX:""+distance+"px"}, time)
+       .velocity({translateX:""+distanceBack+"px"}, 
+       {duration:timeBack})
+
+    animation2.velocity({translateX:""+distance+"px"}, 
+        {duration:time})
+        .velocity({translateX:""+distanceBack+"px"}, 
+        {duration:timeBack});
+
     var leftWheel = $('#leftwheel');
     var leftInnerWheel = $('#leftinnerwheel');
     rotateWheel(leftWheel, leftInnerWheel, time, distance, 3, FORWARD);
@@ -22,6 +31,13 @@ $(document).ready(function(){
         BACKWARD);
     rotateWheel(rightWheel, rightInnerWheel, timeBack, distanceBack, 9,
         BACKWARD);
+
+    $('.startUp a').click(function(){
+        animation1.velocity("fadeOut", 10);
+        animation2.velocity({translateY:""+height+"px"}, 
+        {duration:1000, visibility:"visible", display:"none"});
+    });
+
 });
 
 function rotateWheel(wheel, innerWheel, time, distance, beginCount, direction){

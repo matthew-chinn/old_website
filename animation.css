@@ -4,7 +4,16 @@
     stroke-width:1;
 }
 
-#svg {
+svg {
     position:absolute;
     top:-30px;
+}
+
+.hide {
+    visibility:hidden;
+}
+
+.hair{
+    stroke:black;
+    stroke-width:1;
 }

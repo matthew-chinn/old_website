@@ -11,7 +11,6 @@
     <script src="velocity.js"></script>
     <link rel="stylesheet" type="text/css" href="animation.css">
     <script src="animate.js"></script>
-    <!--<link rel="import" href="animation.html">-->
     
   </head>
 
@@ -22,39 +21,7 @@
     <h1 id="name">Matthew Chinn</h1>
     <p id="des">Welcome to my personal website!</p>
   </div>
-    <div id="animation">
-    <svg id="svg" width="200" height="300">
-        <circle id="face" cx="100" cy="100" r="30" stroke="black" 
-            stroke-width=".5" fill="#D4BF94"/>
-        <ellipse id="lefteye" class="eye" cx="100" cy="95" rx="4" ry="6"/>
-        <circle id="leftinnereye" class="innereye" cx="100" cy="97" r="2"/>
-
-        <ellipse id="righteye" class="eye" cx="115" cy="95" rx="4" ry="6"/>
-        <circle id="rightinnereye" class="innereye" cx="115" cy="97" r="2"/>
-        
-        <path class="hair" d="M100,70 c10,-10 -10,-10 0,-20" 
-            stroke="black" stroke-width="1" fill="none"/>
-
-        <ellipse id="mouth" cx="110" cy="115" rx="5" ry="3"/>
-
-        <polygon points="75,130 125,130 135,145 135,200 65,200 65,145"
-            fill="#B81212" stroke="black" />
-
-        <rect class="wagon" x="20" y="200" width="160" height="50"
-            fill="#246B24" stroke="black"/>
-
-        <circle id="leftwheel" class="wheel" cx="60" cy="265" r="15"
-            fill="white" stroke="black" stroke-width="4"/>
-        <circle id="leftinnerwheel" class="innerwheel" cx="60" cy="273" r="1" 
-            fill="black"/>
-
-        <circle id="rightwheel" class="wheel" cx="140" cy="265" r="15"
-            fill="white" stroke="black" stroke-width="4"/>
-        <circle id="rightinnerwheel" class="innerwheel" cx="148" cy="265" r="1" 
-            fill="black"/>
-    </svg>
-    </div>
-
+    
   <div id="aboutpage">
     <h1>Who am I?</h1>
     <p>My name is Matthew. I am a second year Computer Science major at the
@@ -208,6 +175,94 @@
         <a href="http://matthew-chinn.github.io/psychic"
         target="_blank">
         <img src="psychic.png" id="psychicImage"/></a>
+    </div>
+
+    <div id="animation">
+    <svg id="animation1" width="200" height="300">
+        <circle id="face" cx="100" cy="100" r="30" stroke="black" 
+            stroke-width=".5" fill="#D4BF94"/>
+        <ellipse id="lefteye" class="eye" cx="100" cy="95" rx="4" ry="6"/>
+        <circle id="leftinnereye" class="innereye" cx="100" cy="97" r="2"/>
+
+        <ellipse id="righteye" class="eye" cx="115" cy="95" rx="4" ry="6"/>
+        <circle id="rightinnereye" class="innereye" cx="115" cy="97" r="2"/>
+        
+        <path class="hair" d="M100,70 c10,-10 -10,-10 0,-20" 
+            stroke="black" stroke-width="1" fill="none"/>
+
+        <ellipse id="mouth" cx="110" cy="115" rx="5" ry="3"/>
+
+        <polygon points="75,130 125,130 135,145 135,200 65,200 65,145"
+            fill="#B81212" stroke="black" />
+
+        <rect class="wagon" x="20" y="200" width="160" height="50"
+            fill="url(#grad1)" stroke="black"/>
+
+        <circle id="leftwheel" class="wheel" cx="60" cy="265" r="15"
+            fill="white" stroke="black" stroke-width="4"/>
+        <circle id="leftinnerwheel" class="innerwheel" cx="60" cy="273" r="1" 
+            fill="black"/>
+
+        <circle id="rightwheel" class="wheel" cx="140" cy="265" r="15"
+            fill="white" stroke="black" stroke-width="4"/>
+        <circle id="rightinnerwheel" class="innerwheel" cx="148" cy="265" r="1" 
+            fill="black"/>
+
+        <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="95%" y2="5%">
+                <stop offset="0%" style="stop-color:#246B24;stop_opacity:1"/>
+                <stop offset="100%" style="stop-color:#009900;
+                    stop_opacity:1"/>
+           </linearGradient>
+       </defs>
+    </svg>
+
+    <svg id="animation2" class="hide" width="200" height="300">
+        <circle id="face" cx="100" cy="100" r="30" stroke="black" 
+            stroke-width=".5" fill="#D4BF94"/>
+        <ellipse id="lefteye" class="eye" cx="90" cy="95" rx="4" ry="6"/>
+        <circle id="leftinnereye" class="innereye" cx="90" cy="97" r="2"/>
+
+        <ellipse id="righteye" class="eye" cx="110" cy="95" rx="4" ry="6"/>
+        <circle id="rightinnereye" class="innereye" cx="110" cy="97" r="2"/>
+        
+        <line class="hair" x1="100" y1="70" x2="100" y2="50"/>
+        <line class="hair" x1="95" y1="70" x2="92" y2="50"/>
+        <line class="hair" x1="105" y1="70" x2="108" y2="50"/>
+
+        <ellipse id="mouth" cx="100" cy="115" rx="12" ry="8"/>
+
+        <polygon id="body" points="75,130 125,130 135,120 145,135 135,145 
+            135,200 65,200 65,145 55,135 65,120" fill="#B81212" stroke="black" />
+
+        <polygon id="rightarm" class="arm" points="138,123 142,132 
+            152,112 148,103" fill="#D4BF94" stroke="black"/>
+
+        <polygon id="leftarm" class="arm" points="58,132 62,123 
+            52,103 48,112" fill="#D4BF94" stroke="black"/> 
+
+        <rect class="wagon" x="20" y="200" width="160" height="50"
+            fill="url(#grad1)" stroke="black"/>
+
+        <circle id="leftwheel" class="wheel" cx="60" cy="265" r="15"
+            fill="white" stroke="black" stroke-width="4"/>
+        <circle id="leftinnerwheel" class="innerwheel" cx="60" cy="273" r="1" 
+            fill="black"/>
+
+        <circle id="rightwheel" class="wheel" cx="140" cy="265" r="15"
+            fill="white" stroke="black" stroke-width="4"/>
+        <circle id="rightinnerwheel" class="innerwheel" cx="148" cy="265" r="1" 
+            fill="black"/>
+
+        <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="95%" y2="5%">
+                <stop offset="0%" style="stop-color:#246B24;stop_opacity:1"/>
+                <stop offset="100%" style="stop-color:#009900;
+                    stop_opacity:1"/>
+           </linearGradient>
+       </defs>
+    </svg>
+
     </div>
 
   <div id="buttons" class="startUp">
