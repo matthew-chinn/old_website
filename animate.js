@@ -4,14 +4,24 @@ var BACKWARD = false;
 $(document).ready(function(){
     var svg = $('#svg');
     var time = 3000;
-    var distance = parseInt($('body').width()) - 200;
-    svg.velocity({translateX:""+distance+"px"}, time);
+    var distance = parseInt($('body').width()) - 170;
+
+    var distanceBack = distance - 100;
+    var timeBack = 3000;
+    svg.velocity({translateX:""+distance+"px"}, time)
+       .velocity({translateX:""+distanceBack+"px"}, timeBack);
     var leftWheel = $('#leftwheel');
     var leftInnerWheel = $('#leftinnerwheel');
     rotateWheel(leftWheel, leftInnerWheel, time, distance, 3, FORWARD);
     var rightWheel = $('#rightwheel');
     var rightInnerWheel = $('#rightinnerwheel');
     rotateWheel(rightWheel, rightInnerWheel, time, distance, 0, FORWARD);
+
+    //after impact go backwards
+    rotateWheel(leftWheel, leftInnerWheel, timeBack, distanceBack, 0,
+        BACKWARD);
+    rotateWheel(rightWheel, rightInnerWheel, timeBack, distanceBack, 9,
+        BACKWARD);
 });
 
 function rotateWheel(wheel, innerWheel, time, distance, beginCount, direction){
