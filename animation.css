@@ -1,0 +1,10 @@
+.eye {
+    fill:white;
+    stroke:black;
+    stroke-width:1;
+}
+
+#svg {
+    position:absolute;
+    top:-30px;
+}

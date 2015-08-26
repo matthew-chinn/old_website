@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	$('.startUp a').click(function(){
 		$('#about').animate({top: '50px', right:'50px'});
 		$('#contact').animate({top: '80px', right:'50px'});
