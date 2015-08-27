@@ -4,9 +4,15 @@
     stroke-width:1;
 }
 
-svg {
+#animation1, #animation2{
     position:absolute;
     top:-30px;
+}
+
+#animation3{
+    position:absolute;
+    bottom:0px;
+    right:0px;
 }
 
 .hide {
@@ -16,4 +22,15 @@ svg {
 .hair{
     stroke:black;
     stroke-width:1;
+}
+
+.test{
+    position:fixed;
+    bottom:10px;
+    left:10px;
+}
+
+div#animation{
+    height:100%;
+    width:100%;
 }
