@@ -4,6 +4,7 @@ $(document).ready(function(){
 		$('#contact').animate({top: '80px', right:'50px'});
 		$('#resume').animate({top: '110px', right:'50px'}); 
 		$('#project').animate({top: '140px', right:'50px'});
+        $('#runnerbutton').animate({top: '170px', right:'50px'});
 		$('#home').fadeIn("500");
 		$('#buttons').removeClass("startUp");
 	});
@@ -70,6 +71,12 @@ var transitionHome = function(){
 		top:'70%',
 		right:'22%'
 	}, "slow");
+
+    $('#runnerbutton').animate({
+        position:'absolute',
+        top: '60%',
+        right: '48%'
+    });
 
 	$('#home').fadeOut("500");
 }
