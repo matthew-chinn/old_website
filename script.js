@@ -1,12 +1,23 @@
+var about, contact, resume, project, runnerbutton, home, backtotop,
+    buttons;
 $(document).ready(function(){
-	$('.startUp a').click(function(){
-		$('#about').animate({top: '50px', right:'50px'});
-		$('#contact').animate({top: '80px', right:'50px'});
-		$('#resume').animate({top: '110px', right:'50px'}); 
-		$('#project').animate({top: '140px', right:'50px'});
-        $('#runnerbutton').animate({top: '170px', right:'50px'});
-		$('#home').fadeIn("500");
-		$('#buttons').removeClass("startUp");
+    about = $('#about');
+    contact = $('#contact');
+    resume = $('#resume');
+    project = $('#project');
+    runnerbutton = $('#runnerbutton');
+    home = $('#home');
+    backtotop = $('#backtotop');
+    buttons = $('#buttons');
+
+	$('.startUp div:not(#runnerbutton) a').click(function(){
+		about.velocity({top: '50px', right:'50px'});
+		contact.velocity({top: '80px', right:'50px'});
+		resume.velocity({top: '110px', right:'50px'}); 
+		project.velocity({top: '140px', right:'50px'});
+        runnerbutton.velocity({top: '170px', right:'50px'});
+		home.fadeIn("500");
+		buttons.removeClass("startUp");
 	});
 
     $("#buttons div:not(#runnerbutton) a").click(function(){
@@ -14,32 +25,32 @@ $(document).ready(function(){
     });
 
 
-	$('#about').click(function(){
+	about.click(function(){
 		$('#aboutpage').fadeIn("500").addClass("active");
-		$('#backtotop').fadeOut("500");
+		backtotop.fadeOut("500");
 	});
 
-	$('#contact').click(function(){
+	contact.click(function(){
 		$('#contactpage').fadeIn("500").addClass("active");
-		$('#backtotop').fadeOut("500");
+		backtotop.fadeOut("500");
 	});
 
-	$('#resume').click(function(){
+	resume.click(function(){
 		$('#resumepage').fadeIn("500").addClass("active");
-		$('#backtotop').fadeIn("500");
+		backtotop.fadeIn("500");
 	});
 
-	$('#home').click(function(){
+	home.click(function(){
 		$('#homepage').fadeIn("500").addClass("active");
-		$('#buttons').addClass("startUp");
-		$('#backtotop').fadeOut("500");
+		buttons.addClass("startUp");
+		backtotop.fadeOut("500");
         $('#name').css("fontSize", "24px");
 		transitionHome();
 	});
 
-    $('#project').click(function(){
+    project.click(function(){
 		$('#projectpage').fadeIn("500").addClass("active");
-		$('#backtotop').fadeOut("500");
+		backtotop.fadeIn("500");
     });
 
     transitionHome();
@@ -47,36 +58,36 @@ $(document).ready(function(){
 });
 
 var transitionHome = function(){
-    $('#name').animate({fontSize: '50px' }, "slow");
-	$('#about').animate({
+    $('#name').velocity({fontSize: '50px' }, "slow");
+	about.velocity({
         position:'absolute',
         top:'30%',
         right:'71%'
 	}, "slow");
 
-	$('#contact').animate({
+	contact.velocity({
 		position:'absolute',
 		top:'30%',
 		right:'20%'
 	}, "slow");
 
-	$('#resume').animate({
+	resume.velocity({
 		position:'absolute',
 		top:'70%',
 		right:'70%'
 	}, "slow");
 
-	$('#project').animate({
+	project.velocity({
 		position:'absolute',
 		top:'70%',
 		right:'22%'
 	}, "slow");
 
-    $('#runnerbutton').animate({
+    runnerbutton.velocity({
         position:'absolute',
         top: '60%',
         right: '48%'
     });
 
-	$('#home').fadeOut("500");
+	home.fadeOut("500");
 }

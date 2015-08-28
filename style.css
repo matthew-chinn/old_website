@@ -137,9 +137,8 @@ a:hover{
     vertical-align: top;
 }
 
-.right {
-    position: relative;
-    left: 25px;
+.left{
+    margin-right:25px;   
 }
 
 #skills h3{
@@ -151,4 +150,10 @@ a:hover{
     display: inline-block;
     height: 300px;
     width:180px;
+}
+
+#animateCheckbox{
+    position:fixed;
+    top:10px;
+    left:10px;
 }

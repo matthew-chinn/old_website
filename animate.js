@@ -3,55 +3,92 @@ var BACKWARD = false;
 var RIGHT = true;
 var LEFT = false;
 
+var checkbox, checked;
 var animation1, animation2, bodyWidth, height, leftWheel, 
     leftInnerWheel, rightWheel, rightInnerWheel;
-var cookieX, cookieY, runnerX, runnerY, cookie, runnerSpeed, repeat, prevFace,
-    rightLeg, leftLeg;
+var cookieX, cookieY, runnerX, runnerY, cookie, runnerSpeed, repeat, prevFace;
     //for chase the mouse
+var runnerbutton, runnerBody, runnerFatBody, runnerRLeg, runnerLLeg, 
+    runnerRArm, runnerLArm, runnerREye, runnerMouth;
 
 $(document).ready(function(){
-    height = $(document).height();
-    bodyWidth = parseInt($(document).width());
-    animation1 = $('#animation1');
-    animation2 = $('#animation2');
-    leftWheel = $('#animation1 #leftwheel');
-    leftInnerWheel = $('#animation1 #leftinnerwheel');
-    rightWheel = $('#animation1 #rightwheel');
-    rightInnerWheel = $('#animation1 #rightinnerwheel');
-
-    cookie = $('#cookie');
-    runner = $('#runner');
-    runnerX = runner.css("left");
-    runnerY = runner.css("top");
-    runnerSpeed = 5;
-
-    var totalNumAnimations = 3;
-    
+    checkbox = $('#animateCheckbox');
+    checked = false;
     var animationCount = 0;
-    animationCount = animate(animationCount);
+    var totalNumAnimations = 3;
+    var animation = $('#animation');
+    runner = $('#runner');
 
-    $('#buttons a').click(function(){
-        animationCount = animate(animationCount);
+    checkbox.click(function(){
+        checked = !checked;
+        if(!checked)
+        {
+            animation.addClass("hide");
+            runner.addClass("hide");
+        }
+        else
+        {
+            animation.removeClass("hide");
+            if(animationCount === totalNumAnimations)
+                runner.removeClass("hide");
+        }
+    
+        if(checked && animationCount === 0)
+        {
+            height = $(document).height();
+            bodyWidth = parseInt($(document).width());
+            runnerbutton = $('#runnerbutton');
+            animation1 = $('#animation1');
+            animation2 = $('#animation2');
+            leftWheel = $('#animation1 #leftwheel');
+            leftInnerWheel = $('#animation1 #leftinnerwheel');
+            rightWheel = $('#animation1 #rightwheel');
+            rightInnerWheel = $('#animation1 #rightinnerwheel');
+
+            cookie = $('#cookie');
+            runnerX = runner.css("left");
+            runnerY = runner.css("top");
+            runnerSpeed = 5;
+
+            animationCount = animate(animationCount);
+
+            $('#buttons a').click(function(){
+                if(checked && animationCount < totalNumAnimations)
+                    animationCount = animate(animationCount);
+            });
+        }
     });
 
 });
 
 function startRunner()
 {
-    $('#runnerbutton').removeClass("hide")
+    runnerbutton.removeClass("hide")
                       .velocity("fadeIn", 500);
-    $('#runnerbutton').click(function(e){
-        runner.css("visibility","visible");
-        if($('#runner svg #body').css("visibility") === "hidden")
+    runnerbutton.click(function(e){
+        runner.removeClass("hide");
+
+        //initialize selector variables
+        runnerBody = $('#runner svg #body');
+        runnerFatBody = $('#runner svg #fatbody');
+        runnerRLeg = $('#runner svg #rightleg');
+        runnerLLeg = $('#runner svg #leftleg');
+        runnerRArm = $('#runner svg #rightarm');
+        runnerLArm = $('#runner svg #leftarm');
+        runnerREye = $('#runner svg #righteye');
+        runnerMouth = $('#runner svg #mouth');
+        
+        if(runnerBody.css("visibility") === "hidden")
         {
-            $('#runner svg #body').css("visibility","visible");
-            $('#runner svg #fatbody').css("visibility", "hidden");
+            runnerBody.css("visibility","visible");
+            runnerFatBody.css("visibility", "hidden");
         }
-        rightLeg = $('#runner svg #rightleg');
-        leftLeg = $('#runner svg #leftleg');
         prevFace = RIGHT;
         cookie.removeClass("hide");
         layTreat(e);
+        $(document).click(function(e){
+            layTreat(e);
+        });
         chaseTheCookie();
     });
 
@@ -89,8 +126,8 @@ function chaseTheCookie()
     {
         repeat = false;
         cookie.addClass("hide");
-        $('#runner svg #body').css("visibility","hidden");
-        $('#runner svg #fatbody').css("visibility", "visible");
+        runnerBody.css("visibility","hidden");
+        runnerFatBody.css("visibility", "visible");
     }
     if(prevFace != faceNow) //face should swap
     {
@@ -125,34 +162,34 @@ var step = true;
 
 function runAnimation(facing, time)
 {
-    rightLeg.attr("d",rightLegNormal);
-    leftLeg.attr("d", leftLegNormal);
+    runnerRLeg.attr("d",rightLegNormal);
+    runnerLLeg.attr("d", leftLegNormal);
 
     setTimeout(function(){
         if(facing === RIGHT)
         {
             if(step)
             {
-                $('#runner svg #rightleg').attr("d", rightLegRunRight1);
-                $('#runner svg #leftleg').attr("d", leftLegRunRight2);
+                runnerRLeg.attr("d", rightLegRunRight1);
+                runnerLLeg.attr("d", leftLegRunRight2);
             }
             else
             {
-                $('#runner svg #rightleg').attr("d", rightLegRunRight2);
-                $('#runner svg #leftleg').attr("d", leftLegRunRight1);
+                runnerRLeg.attr("d", rightLegRunRight2);
+                runnerLLeg.attr("d", leftLegRunRight1);
             }
         }
         else if(facing === LEFT)
         {
             if(step)
             {
-                $('#runner svg #leftleg').attr("d", leftLegRunLeft1);
-                $('#runner svg #rightleg').attr("d", rightLegRunLeft2);
+                runnerLLeg.attr("d", leftLegRunLeft1);
+                runnerRLeg.attr("d", rightLegRunLeft2);
             }
             else
             {
-                $('#runner svg #leftleg').attr("d", leftLegRunLeft2);
-                $('#runner svg #rightleg').attr("d", rightLegRunLeft1);
+                runnerLLeg.attr("d", leftLegRunLeft2);
+                runnerRLeg.attr("d", rightLegRunLeft1);
             }
         }
         step = !step;
@@ -168,26 +205,22 @@ var rightArmDataTwo = "M13,33 l-2,0";
 
 function switchDirection()
 {
-    var rightEye = $('#runner svg #righteye'); //eye that may move
     var center = 20; //center of the face, where left eye is
-    var eyeOffset = parseInt(rightEye.attr("cx")) - center;
+    var eyeOffset = parseInt(runnerREye.attr("cx")) - center;
     eyeOffset *= -1; //flip
-    rightEye.attr("cx", ""+(center + eyeOffset));
-    var mouth = $('#runner svg #mouth');
-    var mouthOffset = parseInt(mouth.attr("cx")) - center;
+    runnerREye.attr("cx", ""+(center + eyeOffset));
+    var mouthOffset = parseInt(runnerMouth.attr("cx")) - center;
     mouthOffset *= -1;
-    mouth.attr("cx",""+(center + mouthOffset));
-    var leftArm = $('#runner svg #leftarm');
-    var rightArm = $('#runner svg #rightarm');
-    if(leftArm.attr("d") === leftArmDataOne) //facing right
+    runnerMouth.attr("cx",""+(center + mouthOffset));
+    if(runnerLArm.attr("d") === leftArmDataOne) //facing right
     {
-        leftArm.attr("d", leftArmDataTwo);
-        rightArm.attr("d", rightArmDataTwo);
+        runnerLArm.attr("d", leftArmDataTwo);
+        runnerRArm.attr("d", rightArmDataTwo);
     }
     else
     {
-        leftArm.attr("d", leftArmDataOne);
-        rightArm.attr("d", rightArmDataOne);
+        runnerLArm.attr("d", leftArmDataOne);
+        runnerRArm.attr("d", rightArmDataOne);
     }
 }
 
@@ -200,9 +233,6 @@ function layTreat(e)
     cookieY = e.clientY - cookieCompensate;
     cookie.css("top",cookieY)
           .css("left", cookieX);
-    $(document).click(function(e){
-        layTreat(e);
-    });
 }
 
 //animate according to what number in sequence
@@ -212,7 +242,7 @@ function animate(count)
     bodyWidth = parseInt($('body').width());
     switch(count){
         case 0: //initial forward
-            var distance = bodyWidth - 180; //for initial travel forward
+            var distance = bodyWidth; //for initial travel forward
             var distanceBack = distance - 100;
             var timeForward = 3000; //for initial distance
             var timeBack = 2000;

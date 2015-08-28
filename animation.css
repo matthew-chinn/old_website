@@ -7,6 +7,7 @@ svg:not(#runner) .eye{
 #animation1, #animation2{
     position:absolute;
     top:-30px;
+    left:-160px
 }
 
 #animation3{
@@ -51,7 +52,6 @@ div#animation{
     position:fixed;
     top:50%;
     left:50%;
-    visibility:hidden;
 }
 
 #cookie{
