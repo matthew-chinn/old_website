@@ -112,6 +112,7 @@ p{
 #resume {position:fixed; top:90%; right:90%;}
 #project{position:fixed; top:90%; right:10%;}
 #home {display:none; position:fixed; top: 20px; right: 50px}
+#runnerbutton{display:none; position:fixed; top: 170px; right:50px}
 
 #contactpage p{
     text-align:center;

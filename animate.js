@@ -109,39 +109,54 @@ function chaseTheCookie()
         setTimeout(function(){chaseTheCookie();}, time*2);
 }
 
+var legAngle = 3;
 var rightLegNormal = "M23,40 l0,10";
-var rightLegRunRight = "M23,40 l2,5 l-5,5";
-var rightLegRunLeft = "M23,40 l-0,5 l5,5";
+var rightLegRunRight1 = "M23,40 l"+legAngle+",5 l-5,5";
+var rightLegRunRight2 = "M23,40 l"+legAngle+",10";
+var rightLegRunLeft1 = "M23,40 l"+(-1*legAngle)+",5 l5,5";
+var rightLegRunLeft2 = "M23,40 l"+legAngle+",10";
 
 var leftLegNormal = "M17,40 l0,10";
-var leftLegRunRight = "M17,40 l0,5 l-5,5";
-var leftLegRunLeft = "M17,40 l-2,5 l5,5";
+var leftLegRunRight1 = "M17,40 l"+legAngle+",5 l-5,5";
+var leftLegRunRight2 = "M17,40 l"+(-1*legAngle)+",10";
+var leftLegRunLeft1 = "M17,40 l"+(-1*legAngle)+",5 l5,5";
+var leftLegRunLeft2 = "M17,40 l"+(-1*legAngle)+",10";
+var step = true;
 
 function runAnimation(facing, time)
 {
     rightLeg.attr("d",rightLegNormal);
     leftLeg.attr("d", leftLegNormal);
 
-    setTimeout(function(rightLeg, leftLeg){
+    setTimeout(function(){
         if(facing === RIGHT)
         {
-            console.log("go right");
-            $('#runner svg #rightleg').attr("d", rightLegRunRight);
-            setTimeout(function(){
-                $('#runner svg #rightleg').attr("d", rightLegNormal);
-                $('#runner svg #leftleg').attr("d", leftLegRunRight);
-            }, time * 2/3);
+            if(step)
+            {
+                $('#runner svg #rightleg').attr("d", rightLegRunRight1);
+                $('#runner svg #leftleg').attr("d", leftLegRunRight2);
+            }
+            else
+            {
+                $('#runner svg #rightleg').attr("d", rightLegRunRight2);
+                $('#runner svg #leftleg').attr("d", leftLegRunRight1);
+            }
         }
         else if(facing === LEFT)
         {
-            console.log("go left");
-            $('#runner svg #leftleg').attr("d", leftLegRunLeft);
-            setTimeout(function(){
-                $('#runner svg #leftleg').attr("d", leftLegNormal);
-                $('#runner svg #rightleg').attr("d", rightLegRunLeft);
-            }, time * 2/3);
+            if(step)
+            {
+                $('#runner svg #leftleg').attr("d", leftLegRunLeft1);
+                $('#runner svg #rightleg').attr("d", rightLegRunLeft2);
+            }
+            else
+            {
+                $('#runner svg #leftleg').attr("d", leftLegRunLeft2);
+                $('#runner svg #rightleg').attr("d", rightLegRunLeft1);
+            }
         }
-    }, time/3);
+        step = !step;
+    }, time/2);
 }
         
 

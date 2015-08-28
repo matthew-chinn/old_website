@@ -178,6 +178,35 @@
     </div>
 
     <div id="animation">
+
+    <div id="runner">
+    <svg width="40" height="60">
+        <circle id="face" cx="20" cy="20" r="6" stroke="black"
+            stroke-width=".5" fill="#D4BF94"/>
+        <ellipse id="lefteye" class="eye" cx="20" cy="19" rx=".8" ry="1.2"/>
+        <ellipse id="righteye" class="eye" cx="23" cy="19" rx=".8" ry="1.2"/>
+        
+        <path class="hair" d="M20,14 c2,-2 -2,-2 0,-4" 
+            stroke="black" stroke-width="1" fill="none"/>
+
+        <ellipse id="mouth" cx="22" cy="23" rx="1" ry=".6"/>
+
+        <polygon id="body" points="15,26 25,26 27,29 27,40 13,40 13,29"
+            fill="#B81212" stroke="black" stroke-width=".5" />
+
+        <ellipse id="fatbody" class="hide" cx ="20" cy="34" ry="8" rx="10" 
+            stroke="black" fill="#B81212" stroke-width=".5"/>
+
+        <path id="rightarm" class="arm" d="M27,33 l2,0"/>
+        <path id="leftarm" class="arm" d="M20,30 l1,5 l5,0"/>
+
+        <path id="rightleg" class="leg" d="M23,40 l0,10"/>
+        <path id="leftleg" class="leg" d="M17,40 l0,10"/>
+    </svg>
+    </div>
+
+    <img id="cookie" src="cookie.png" class="hide"/>
+
     <svg id="animation1" width="200" height="300">
         <circle id="face" cx="100" cy="100" r="30" stroke="black" 
             stroke-width=".5" fill="#D4BF94"/>
@@ -271,6 +300,7 @@
       <div id="contact"><a>Contact Me</a></div> 
       <div id="resume"><a>Resume</a></div>
       <div id="project"><a>Projects</a></div>
+      <div id="runnerbutton"><a>Cookie</a></div>
   </div>
   <div id="backtotop">
      <a href="#top" id="jumptop">Back to top</a>

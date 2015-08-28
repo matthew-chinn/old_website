@@ -8,7 +8,7 @@ $(document).ready(function(){
 		$('#buttons').removeClass("startUp");
 	});
 
-    $('#buttons a').click(function(){
+    $("#buttons div:not(#runnerbutton) a").click(function(){
 		$('.active').fadeOut("500").removeClass("active");
     });
 
