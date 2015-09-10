@@ -1,5 +1,41 @@
 var about, contact, resume, project, runnerbutton, home, backtotop,
     buttons;
+
+var transitionHome = function(){
+    $('#name').velocity({fontSize: '50px' }, "slow");
+	about.velocity({
+        position:'absolute',
+        top:'30%',
+        right:'71%'
+	}, "slow");
+
+	contact.velocity({
+		position:'absolute',
+		top:'30%',
+		right:'20%'
+	}, "slow");
+
+	resume.velocity({
+		position:'absolute',
+		top:'70%',
+		right:'70%'
+	}, "slow");
+
+	project.velocity({
+		position:'absolute',
+		top:'70%',
+		right:'22%'
+	}, "slow");
+
+    runnerbutton.velocity({
+        position:'absolute',
+        top: '60%',
+        right: '48%'
+    });
+
+	home.fadeOut("500");
+}
+
 $(document).ready(function(){
     about = $('#about');
     contact = $('#contact');
@@ -57,37 +93,4 @@ $(document).ready(function(){
 
 });
 
-var transitionHome = function(){
-    $('#name').velocity({fontSize: '50px' }, "slow");
-	about.velocity({
-        position:'absolute',
-        top:'30%',
-        right:'71%'
-	}, "slow");
 
-	contact.velocity({
-		position:'absolute',
-		top:'30%',
-		right:'20%'
-	}, "slow");
-
-	resume.velocity({
-		position:'absolute',
-		top:'70%',
-		right:'70%'
-	}, "slow");
-
-	project.velocity({
-		position:'absolute',
-		top:'70%',
-		right:'22%'
-	}, "slow");
-
-    runnerbutton.velocity({
-        position:'absolute',
-        top: '60%',
-        right: '48%'
-    });
-
-	home.fadeOut("500");
-}
