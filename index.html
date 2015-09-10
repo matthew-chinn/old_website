@@ -3,14 +3,20 @@
   
   <head>
     <title>Welcome!</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" media="(max-width:640px)"
+        href="mobileStyle.css">
+    <link rel="stylesheet" type="text/css" media="(min-width:640px)"
+        href=desktopStyle.css">
+
     <link rel="stylesheet" type="text/css" href="animation.css">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
     </script>
-    <script src="velocity.js" async></script>
+    <script src="velocity.js"></script>
     <script type="text/javascript" src="compressedScript.js" async></script>
     <script src="compressedAnimate.js" async></script>
+
+    <meta name=viewport content="width=device-width, initial-scale=1">
     
   </head>
 
@@ -19,7 +25,7 @@
 
   <div id="homepage" class="active">
     <h1 id="name">Matthew Chinn</h1>
-    <p id="des">Welcome to my personal website!</p>
+    <p id="des">Responsible. Driven. Compassionate.</p>
   </div>
     
   <div id="aboutpage">
