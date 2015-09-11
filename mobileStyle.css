@@ -1,5 +1,10 @@
 @media only screen and (max-width:750px){
 
+    body{
+        margin: 0px;
+        padding: 0px;
+    }
+
     #animateCheckbox{
         display:none; /*no animation on mobile*/
     }
@@ -37,23 +42,32 @@
         position:fixed;
         width:100%;
         bottom:0px;
-        background-color:black;
     }
 
     .mobile.homebuttondiv{
         width:100%;
         position:fixed;
         top:0px;
-        background-color:black;
     }
 
-    .mobileButtons div ,.mobile.homebuttondiv div{
+    .mobileButtons div ,.mobile.homebuttondiv div, #mobileTopDiv{
         display: inline-block;
         width: 24%;
         text-align:center;
         white-space: nowrap;
         outline-color:white;
         outline-style: groove;
+        background-color:white;
+    }
+
+    #mobileTopDiv{
+        display:block;
+        width: 30px;
+    }
+
+    .mobileButtons img, #mobileHome img, #mobileBacktotop img{
+        height: 30px;
+        width: 30px;
     }
 
     .mobile.homebuttondiv div{
@@ -63,8 +77,8 @@
 
     .mobile.backtotop{
         position: fixed;
-        top: 5%;
-        right: 5%;
+        bottom: 40px;
+        right: 1%;
     }
 
     .backtotop:not(.mobile){
