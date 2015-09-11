@@ -11,7 +11,7 @@ h1 {
     color: white;
     text-align: center;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 a {
@@ -42,12 +42,12 @@ p{
 #aboutpage{
     display: none;
     position:absolute;
-    top:100px;
+    top:10%;
     width:100%;
 }
 
 #aboutpage p{
-    width:700px; 
+    width:60%; 
     margin: 0 auto;
 }
 
@@ -61,7 +61,7 @@ p{
 #contactpage{
     display:none;
     position:absolute;
-    top:200px;
+    top:20%;
     width: 100%;
     margin-left:auto;
     margin-right:auto;
@@ -75,7 +75,7 @@ p{
     width:100%;
     display:none;
     position:absolute;
-    top: 10px;
+    top: 5%;
     color:white;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
@@ -83,13 +83,17 @@ p{
 #projectpage{
     display: none;
     position:absolute;
-    top: 30px;
+    top: 5%;
     width:100%;
 }
 
 #projectpage a{
     opacity:1;
     text-decoration:underline;
+}
+
+#projectpage h1{
+    font-size:30px;
 }
 
 #resumepage h1{
@@ -111,7 +115,7 @@ p{
 #contact {position:fixed; top:10%; right:10%;}
 #resume {position:fixed; top:90%; right:90%;}
 #project{position:fixed; top:90%; right:10%;}
-#home {display:none; position:fixed; top: 20px; right: 50px}
+#home {display:none; position:fixed; top: 20px; right: 30px}
 #runnerbutton{display:none; position:fixed; top: 170px; right:50px}
 
 #contactpage p{
@@ -121,15 +125,14 @@ a:hover{
     opacity:1;
 }
 
-#backtotop {
-    display: none;
+.backtotop:not(.mobile) {
     position:fixed;
     bottom:30px;
-    right:50px;
+    right:30px;
 }
 
-#psychicImage, #palaceImage {
-    width: 45%;
+.projectpic{
+    width: 700px;
 }
 
 .column {
@@ -156,5 +159,24 @@ a:hover{
     position:fixed;
     top:10px;
     left:10px;
+}
+
+.mobile{
+    display:none;
+}
+
+.hidden{
+    display:none;
+}
+
+@media (max-width:900px){
+    .projectpic{
+        width: 70%;
+        height: initial;
+    }
+    .gympic{
+        width: 25%;
+        height: initial;
+    }
 }
 

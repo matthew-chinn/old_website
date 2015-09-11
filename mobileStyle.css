@@ -1,35 +1,105 @@
-@media only screen and (max-width:640px){
+@media only screen and (max-width:750px){
 
     #animateCheckbox{
         display:none; /*no animation on mobile*/
+    }
+
+    h1{
+        font-size: 30px;
+    }
+
+    #animation{
+        display:none;
     }
 
     #homepage{
         top:25%;
     }
 
-    #homepage h1{
-        font-size: 30px;
-    }
-
     #homepage p{
-        display:none;
+        margin-top:20px;
     }
+    
 
     #buttons {
        display:none;
     }
 
-    .mobileButtons{
-        display: block;
-        position:fixed;
-        bottom:0px;
+    .mobile{
+        display:block;
     }
 
-    .mobileButtons div{
+    .hidden{
+        display:none;
+    }
+
+    .mobileButtons{
+        position:fixed;
+        width:100%;
+        bottom:0px;
+        background-color:black;
+    }
+
+    .mobile.homebuttondiv{
+        width:100%;
+        position:fixed;
+        top:0px;
+        background-color:black;
+    }
+
+    .mobileButtons div ,.mobile.homebuttondiv div{
         display: inline-block;
-        width: 20%;
-        margin: 5px 5px;
+        width: 24%;
+        text-align:center;
+        white-space: nowrap;
+        outline-color:white;
+        outline-style: groove;
+    }
+
+    .mobile.homebuttondiv div{
+        margin: 0 auto;
+        display: block;
+    }
+
+    .mobile.backtotop{
+        position: fixed;
+        top: 5%;
+        right: 5%;
+    }
+
+    .backtotop:not(.mobile){
+        display:none;
+    }
+
+    #aboutpage{
+        top: 5%;
+    }
+
+    #aboutpage .picofme{
+        width: 50%;
+        height: initial;
+    }
+
+    #resumepage *:not(.column), #contactpage{
+        width: 90%;
+    }
+
+    #resumepage h1{
+        font-size:40px;
+        margin: 5px;
+    }
+
+    #contactpage a{
+        font-size:20px;
+    }
+
+    .projectpic{
+        width: 80%;
+    }
+
+    .gympic{
+        width: 25%;
+        height: initial;
     }
 
 

@@ -5,14 +5,13 @@
     <title>Welcome!</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css"
-        media="only screen and (max-width:640px)" href="mobileStyle.css">
+        media="only screen and (max-width:750px)" href="mobileStyle.css">
     <link rel="stylesheet" type="text/css" href="animation.css">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
     </script>
     <script src="velocity.js"></script>
-    <script type="text/javascript" src="compressedScript.js" async></script>
-    <script src="compressedAnimate.js" async></script>
+    <script type="text/javascript" src="compressedScripts.js" async></script>
 
     <meta name=viewport content="width=device-width, initial-scale=1">
     
@@ -28,7 +27,7 @@
     
   <div id="aboutpage">
     <h1>Who am I?</h1>
-    <p>My name is Matthew. I am a second year Computer Science major at the
+    <p>I am a second year Computer Science major at the
     University of California, San Diego. I enjoy drumming, guitaring, and
     exercising, and cheering along those Los Angeles Angels of Anaheim and
     San Diego Chargers.</p>
@@ -102,8 +101,7 @@
           <h3>Ren Asian Bistro, January-March 2014</h3>
             <p><ul>
             <li>Took orders, delivered food, bussed tables</li>
-            <li>Intermediated between customers and Chinese-speaking chefs, despite
-            not speaking Chinese</li>
+            <li>Intermediated between customers and chefs</li>
             </ul></p>
           <h4><i>Skills</i>: Verstile, quick learner, communication</h4>
 
@@ -146,6 +144,7 @@
            packages</li>
            </ul></p>
          <h4><i>Skills</i>: Considerate, hard-working, mentoring</h4>
+         <br />
 
     </div>
 
@@ -157,7 +156,7 @@
         <p>A computer version of a card game I enjoy playing</p>
          <a href="http://matthew-chinn.github.io/palace"
          target="_blank">
-        <img src="pictures/palace.jpg" id="palaceImage"/></a>
+        <img src="pictures/palace.jpg" id="palaceImage" class="projectpic"/></a>
 
         <br>
         <a
@@ -178,7 +177,7 @@
         <p>My version of "Peter Answers," a popular online psychic.</p>
         <a href="http://matthew-chinn.github.io/psychic"
         target="_blank">
-        <img src="pictures/psychic.jpg" id="psychicImage"/></a>
+        <img src="pictures/psychic.jpg" id="psychicImage" class="projectpic"/></a>
     </div>
 
     <div id="animation" class="hide">
@@ -301,23 +300,31 @@
 
 
   <div id="buttons" class="startUp">
-      <div id="home"><a >Home</a></div> 
-      <div id="about"><a>About</a></div>
-      <div id="contact"><a>Contact Me</a></div> 
-      <div id="resume"><a>Resume</a></div>
-      <div id="project"><a>Projects</a></div>
+      <div id="home" class="button home"><a >Home</a></div> 
+      <div id="about" class="button about"><a>About</a></div>
+      <div id="contact" class="button contact"><a>Contact</a></div> 
+      <div id="resume" class="button resume"><a>Resume</a></div>
+      <div id="project" class="button project"><a>Projects</a></div>
       <div id="runnerbutton"><a>Cookie</a></div>
   </div>
 
-  <div class="mobileButtons" style="display:none">
-      <div id="mobileAbout"><a>About</a></div>
-      <div id="mobileContact"><a>Contact</a></div>
-      <div id="resume"><a>Resume</a></div>
-      <div id="projects"><a>Projects</a></div>
+  <div class="mobile homebuttondiv ">
+    <div id="mobileHome" class="button home"><a>H</a></div>
   </div>
 
-  <div id="backtotop">
-     <a href="#top" id="jumptop">Back to top</a>
+  <div class="mobileButtons mobile">
+      <div id="mobileAbout" class="button about"><a>A</a></div>
+      <div id="mobileContact" class="button contact"><a>C</a></div>
+      <div id="mobileResume" class="button resume"><a>R</a></div>
+      <div id="mobileProjects" class="button project"><a>P</a></div>
+  </div>
+
+  <div id="mobileBacktotop" class="mobile backtotop hidden">
+    <a href="#top">^</a>
+  </div>
+
+  <div class="backtotop hidden">
+     <a href="#top">Back to top</a>
   </div>
   </body>
 

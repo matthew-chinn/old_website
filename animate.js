@@ -291,13 +291,6 @@ function animate(count)
             rotateWheel(rightWheel, rightInnerWheel, time, bodyWidth, 0,
                 BACKWARD);
 
-            var rotate = function(){
-                setTimeout(function(){
-                    animation1.velocity({rotateZ:""+rotateTo+"deg"}, 
-                            {duration:time, queue:false});
-                }, time/5);
-            }
-
             animation1.velocity("fadeIn", 1);
             animation1.velocity({translateX:""+finalX+"px",
                                  translateY:""+finalY+"px",
@@ -306,7 +299,10 @@ function animate(count)
                                  begin:function(){
                                          makeRainbow($('.wagon'),time);
                                          flipWagon();
-                                         rotate;
+                                         setTimeout(function(){
+                            animation1.velocity({rotateZ:""+rotateTo+"deg"}, 
+                                                {duration:time, queue:false});
+                                                }, time/5);
                                      },
                                  complete:startRunner});
             
