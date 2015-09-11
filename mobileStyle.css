@@ -1,7 +1,7 @@
 @media only screen and (max-width:750px){
 
     body{
-        margin: 0px;
+        margin: 3px;
         padding: 0px;
     }
 
@@ -53,6 +53,7 @@
     .mobileButtons div ,.mobile.homebuttondiv div, #mobileTopDiv{
         display: inline-block;
         width: 24%;
+        height: 40px;
         text-align:center;
         white-space: nowrap;
         outline-color:white;
@@ -77,7 +78,7 @@
 
     .mobile.backtotop{
         position: fixed;
-        bottom: 40px;
+        bottom: 45px;
         right: 1%;
     }
 
@@ -121,5 +122,25 @@
     }
 
 
+    @media only screen and (max-width:400px){
+
+        .mobileButtons div ,.mobile.homebuttondiv div, #mobileTopDiv{
+            height:50px;
+        }
+
+        .mobileButtons img, .mobile.backtotop img, .mobile.homebuttondiv img{
+            margin-top: 10px;
+        }
+
+        #aboutpage, #resumepage, #projectpage{
+            top: 10%;
+        }
+
+        .mobile.backtotop{
+        position: fixed;
+        bottom: 55px;
+        right: 1%;
+        }
+    }
     
 }
