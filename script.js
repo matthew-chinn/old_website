@@ -90,7 +90,7 @@ $(document).ready(function(){
     mq.addListener(WidthChange);
     WidthChange(mq);
 
-    function buttonsToTop(){
+    var buttonsToTop = function(){
         about.velocity({top: '50px', right:'30px'});
         contact.velocity({top: '80px', right:'30px'});
         resume.velocity({top: '110px', right:'30px'}); 
@@ -109,7 +109,9 @@ $(document).ready(function(){
             home = $('#home');
 
             if($('#homepage').hasClass("active")){
-                $('.startUp div:not(#runnerbutton) a').click(buttonsToTop);  
+                $('.startUp div:not(#runnerbutton, #home) a').click(function(){
+                    buttonsToTop()
+                });  
                 transitionHome();
             }
             else{
