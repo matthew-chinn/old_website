@@ -90,6 +90,10 @@
         top: 5%;
     }
 
+    #aboutpage p{
+        width:85%;
+    }
+
     #aboutpage .picofme{
         width: 50%;
         height: initial;
@@ -122,7 +126,11 @@
     }
 
 
-    @media only screen and (max-width:400px){
+    @media only screen and (max-width:410px){
+
+        body{
+            margin-left:2px;
+        }
 
         .mobileButtons div ,.mobile.homebuttondiv div, #mobileTopDiv{
             height:50px;
