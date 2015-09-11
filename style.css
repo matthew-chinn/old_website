@@ -101,7 +101,7 @@ p{
     padding-left:10px;
 }
 
-#des {
+#homepage p{
     color:white;
     text-align: center;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -157,3 +157,4 @@ a:hover{
     top:10px;
     left:10px;
 }
+
