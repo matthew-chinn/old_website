@@ -80,7 +80,7 @@
         height: initial;
     }
 
-    #resumepage *:not(.column), #contactpage{
+    #resumepage *:not(.column){
         width: 90%;
     }
 
@@ -100,6 +100,10 @@
     .gympic{
         width: 25%;
         height: initial;
+    }
+
+    .page {
+        width: 95%;
     }
 
 

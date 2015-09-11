@@ -29,9 +29,12 @@ p{
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
+.page{
+    width: 100%;
+}
+
 #homepage {
     position:absolute;
-    width: 100%;
     top:45%;
 }
 
@@ -43,7 +46,6 @@ p{
     display: none;
     position:absolute;
     top:10%;
-    width:100%;
 }
 
 #aboutpage p{
@@ -62,7 +64,6 @@ p{
     display:none;
     position:absolute;
     top:20%;
-    width: 100%;
     margin-left:auto;
     margin-right:auto;
 }
@@ -72,7 +73,6 @@ p{
 }
 
 #resumepage{    
-    width:100%;
     display:none;
     position:absolute;
     top: 5%;
@@ -84,7 +84,6 @@ p{
     display: none;
     position:absolute;
     top: 5%;
-    width:100%;
 }
 
 #projectpage a{
