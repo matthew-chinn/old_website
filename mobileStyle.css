@@ -16,15 +16,21 @@
         display:none;
     }
 
-    #buttons div {
-        position:fixed;
+    #buttons {
+       display:none;
     }
 
-    #about { top:35%; }
-    #contact { top:35%; }
-    #resume { top:40%; }
-    #project { top:45%; }
+    .mobileButtons{
+        display: block;
+        position:fixed;
+        bottom:0px;
+    }
 
+    .mobileButtons div{
+        display: inline-block;
+        width: 20%;
+        margin: 5px 5px;
+    }
 
 
     
