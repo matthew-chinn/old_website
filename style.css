@@ -80,6 +80,34 @@ p{
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
+#download_resume, #download_resume *{
+    font-size: 12px;
+    width: 100%;
+    text-align:center;
+
+}
+
+#resume_title{
+    margin: 10px auto;
+}
+
+.work_position{
+    font-size: 15px;
+    font-style: italic;
+}
+
+.resume_section{
+    font-size: 30px;
+    margin: 10px 5px;
+}
+
+.work_info{
+    margin: 0px 20px;
+}
+.company{
+    margin: 10px 0px;
+}
+
 #projectpage{
     display: none;
     position:absolute;
